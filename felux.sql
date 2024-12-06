@@ -1,4 +1,5 @@
-<?php 
+
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,7 +20,8 @@ class CreateAllTables extends Migration
             $table->string('stock');
             $table->timestamp('dateofsold')->useCurrent();
             $table->text('date');
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->string('reported');
             $table->string('sitename');
             $table->string('login')->nullable();
@@ -38,7 +40,8 @@ class CreateAllTables extends Migration
             $table->string('stock');
             $table->timestamp('dateofsold')->useCurrent();
             $table->text('date');
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->string('reported');
             $table->string('bankname');
             $table->integer('balance');
@@ -55,7 +58,8 @@ class CreateAllTables extends Migration
             $table->integer('sold');
             $table->string('stock');
             $table->timestamp('dateofsold')->useCurrent();
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->timestamp('date')->useCurrent();
             $table->string('reported');
             $table->timestamps();
@@ -75,7 +79,8 @@ class CreateAllTables extends Migration
             $table->text('infos');
             $table->text('url');
             $table->integer('price');
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->integer('sold');
             $table->string('stock');
             $table->timestamp('dateofsold')->useCurrent();
@@ -94,7 +99,8 @@ class CreateAllTables extends Migration
             $table->text('infos');
             $table->text('url');
             $table->integer('price');
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->integer('sold');
             $table->timestamp('date')->useCurrent();
             $table->timestamp('dateofsold')->useCurrent();
@@ -103,7 +109,7 @@ class CreateAllTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('manager', function (Blueprint $table) {
+        Schema::create('managers', function (Blueprint $table) {
             $table->id();
             $table->string('username');
             $table->string('password');
@@ -118,7 +124,7 @@ class CreateAllTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('newseller', function (Blueprint $table) {
+        Schema::create('newsellers', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('content');
@@ -126,7 +132,7 @@ class CreateAllTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('payment', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('user');
             $table->string('method');
@@ -141,7 +147,8 @@ class CreateAllTables extends Migration
 
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->integer('sellers_id');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->string('buyer');
             $table->enum('type', ['type1', 'type2', 'type3']);
             $table->timestamp('date')->useCurrent();
@@ -151,7 +158,6 @@ class CreateAllTables extends Migration
             $table->string('login');
             $table->string('pass');
             $table->integer('price');
-            $table->string('sellers');
             $table->string('reported');
             $table->integer('reportid')->nullable();
             $table->timestamps();
@@ -166,13 +172,15 @@ class CreateAllTables extends Migration
             $table->integer('ram');
             $table->string('url');
             $table->integer('price');
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->integer('sold');
             $table->timestamps();
         });
 
         Schema::create('reports', function (Blueprint $table) {
-            $table->string('users_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('seen')->default(1);
             $table->enum('status', ['1', '2', '3'])->default('1');
             $table->enum('acctype', ['type1', 'type2', 'type3']);
@@ -181,22 +189,23 @@ class CreateAllTables extends Migration
             $table->integer('price');
             $table->text('lastreply');
             $table->text('lastup');
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->timestamps();
         });
 
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
             $table->string('username');
-            $table->integer('unsoldb');
-            $table->integer('soldb');
-            $table->integer('isold');
-            $table->integer('iunsold');
-            $table->text('activate');
-            $table->text('btc');
-            $table->text('withdrawal');
-            $table->integer('allsales')->nullable();
-            $table->integer('lastweek')->nullable();
+            $table->unsignedInteger('unsoldb')->default(0);
+            $table->unsignedInteger('soldb')->default(0);
+            $table->unsignedInteger('isold')->default(0);
+            $table->unsignedInteger('iunsold')->default(0);
+            $table->text('activate')->nullable();
+            $table->text('btc')->nullable();
+            $table->text('withdrawal')->nullable();
+            $table->unsignedInteger('allsales')->nullable();
+            $table->unsignedInteger('lastweek')->nullable();
             $table->timestamps();
         });
 
@@ -207,7 +216,8 @@ class CreateAllTables extends Migration
             $table->text('infos');
             $table->text('url');
             $table->integer('price');
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->integer('sold');
             $table->string('stock');
             $table->timestamp('dateofsold')->useCurrent();
@@ -227,7 +237,8 @@ class CreateAllTables extends Migration
             $table->string('stock');
             $table->timestamp('dateofsold')->useCurrent();
             $table->timestamp('date')->useCurrent();
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->string('reported');
             $table->timestamps();
         });
@@ -239,7 +250,8 @@ class CreateAllTables extends Migration
             $table->text('infos');
             $table->text('url');
             $table->integer('price');
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->integer('sold');
             $table->timestamp('date')->useCurrent();
             $table->timestamp('dateofsold')->useCurrent();
@@ -251,9 +263,11 @@ class CreateAllTables extends Migration
 
         Schema::create('support_tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('users_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->enum('status', ['1', '2', '3']);
-            $table->integer('sellers_id');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->text('sellers_url');
             $table->text('memo');
             $table->enum('acctype', ['type1', 'type2', 'type3']);
@@ -261,7 +275,6 @@ class CreateAllTables extends Migration
             $table->timestamp('date')->useCurrent();
             $table->string('subject');
             $table->enum('type', ['type1', 'type2', 'type3']);
-            $table->integer('sellers');
             $table->integer('price');
             $table->string('refounded');
             $table->text('fmemo');
@@ -278,7 +291,8 @@ class CreateAllTables extends Migration
             $table->text('infos');
             $table->text('url');
             $table->integer('price');
-            $table->string('sellers');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
             $table->integer('sold');
             $table->string('stock');
             $table->timestamp('dateofsold')->useCurrent();
@@ -296,7 +310,11 @@ class CreateAllTables extends Migration
             $table->text('item_purchased')->nullable();
             $table->text('ip_address')->nullable();
             $table->date('last_login')->nullable();
-            $table->string('is_seller')->default(0);
+            $table->boolean('is_seller')->default(0);
+            $table->unsignedBigInteger('seller_id')->nullable();
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('set null');
+            $table->unsignedBigInteger('admin_id')->nullable();
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('set null');
             $table->integer('reset_pin')->default(0);
             $table->timestamps();
         });
@@ -310,9 +328,9 @@ class CreateAllTables extends Migration
         Schema::dropIfExists('images');
         Schema::dropIfExists('leads');
         Schema::dropIfExists('mailers');
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('managers');
         Schema::dropIfExists('news');
-        Schema::dropIfExists('newseller');
+        Schema::dropIfExists('newsellers');
         Schema::dropIfExists('payments');
         Schema::dropIfExists('purchases');
         Schema::dropIfExists('rdps');
@@ -321,8 +339,8 @@ class CreateAllTables extends Migration
         Schema::dropIfExists('scampages');
         Schema::dropIfExists('smtps');
         Schema::dropIfExists('shells');
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('support_tickets');
         Schema::dropIfExists('tutorials');
         Schema::dropIfExists('users');
     }
-};
+}
