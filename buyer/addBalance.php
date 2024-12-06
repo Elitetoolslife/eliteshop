@@ -79,17 +79,17 @@ table.floatThead-table {
              function ajaxinfo() {
                 $.ajax({
                     type: 'GET',
-                    url: 'ajaxinfo.html',
+                    url: 'ajaxinfo',
                     timeout: 10000,
 
                     success: function(data) {
                         if (data != '01') {
                             var data = JSON.parse(data);
                             for (var prop in data) {
-                                $("#" + prop).html(data[prop]).show();
+                                $("#" + prop)(data[prop]).show();
                             }
                         } else {
-                            window.location = "logout.html";
+                            window.location = "logout";
                         }
                     }
                 });
@@ -125,13 +125,13 @@ function pageDiv(n,t,u,x){
 
     	}
       document.title = obj.Title;
-    $("#mainDiv").html('<div id="mydiv"><img src="files/img/load2.gif" class="ajax-loader"></div>').show();
+    $("#mainDiv")('<div id="mydiv"><img src="files/img/load2.gif" class="ajax-loader"></div>').show();
     $.ajax({
     type:       'GET',
-    url:        'divPage'+n+'.html',
+    url:        'divPage'+n+'',
     success:    function(data)
     {
-        $("#mainDiv").html(data).show();
+        $("#mainDiv")(data).show();
         newTableObject = document.getElementById('table');
         sorttable.makeSortable(newTableObject);
         $(".sticky-header").floatThead({top:60});
@@ -151,7 +151,7 @@ $(window).on("popstate", function(e) {
 
 $(window).on('load', function() {
 $('.dropdown').hover(function(){ $('.dropdown-toggle', this).trigger('click'); });
-   pageDiv(13,'Add Balance - JeruxShop','addBalance.html',1);
+   pageDiv(13,'Add Balance - JeruxShop','addBalance',1);
    var clipboard = new Clipboard('.copyit');
     clipboard.on('success', function(e) {
       setTooltip(e.trigger, 'Copied!');
@@ -185,38 +185,38 @@ function hideTooltip(btn) {
   <div class="container-fluid">
     <div class="navbar-header">
        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-    <div class="navbar-brand" onClick="location.href='index.html'" onMouseOver="this.style.cursor='pointer'"><b><span class="glyphicon glyphicon-fire"></span> Jerux SHOP <small><span class="glyphicon glyphicon-refresh"></span></small></b></div></div>
+    <div class="navbar-brand" onClick="location.href='index'" onMouseOver="this.style.cursor='pointer'"><b><span class="glyphicon glyphicon-fire"></span> Jerux SHOP <small><span class="glyphicon glyphicon-refresh"></span></small></b></div></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="topFixedNavbar1">
       <ul class="nav navbar-nav">
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hosts <span class="glyphicon glyphicon-chevron-down" id="alhosts"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="rdp.html" onclick="pageDiv(1,'RDP - JeruxShop','rdp.html',0); return false;">RDPs <span class="label label-primary label-as-badge" id="rdp"></span></a></li>
-            <li><a href="cPanel.html" onclick="pageDiv(2,'cPanel - JeruxShop','cPanel.html',0); return false;">cPanels <span class="label label-primary label-as-badge" id="cpanel"></span></a></li>
-            <li><a href="shell.html" onclick="pageDiv(3,'Shell - JeruxShop','shell.html',0); return false;">Shells <span class="label label-primary label-as-badge" id="shell"></span></a></li>  
+            <li><a href="rdp" onclick="pageDiv(1,'RDP - JeruxShop','rdp',0); return false;">RDPs <span class="label label-primary label-as-badge" id="rdp"></span></a></li>
+            <li><a href="cPanel" onclick="pageDiv(2,'cPanel - JeruxShop','cPanel',0); return false;">cPanels <span class="label label-primary label-as-badge" id="cpanel"></span></a></li>
+            <li><a href="shell" onclick="pageDiv(3,'Shell - JeruxShop','shell',0); return false;">Shells <span class="label label-primary label-as-badge" id="shell"></span></a></li>  
           </ul>
         </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Send <span class="glyphicon glyphicon-chevron-down" id="mail"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="mailer.html" onclick="pageDiv(4,'PHP Mailer - JeruxShop','mailer.html',0); return false;">Mailers <span class="label label-primary label-as-badge" id="mailer"></span></a></li>
-            <li><a href="smtp.html" onclick="pageDiv(5,'SMTP - JeruxShop','smtp.html',0); return false;">SMTPs <span class="label label-primary label-as-badge" id="smtp"></span></a></li>  
+            <li><a href="mailer" onclick="pageDiv(4,'PHP Mailer - JeruxShop','mailer',0); return false;">Mailers <span class="label label-primary label-as-badge" id="mailer"></span></a></li>
+            <li><a href="smtp" onclick="pageDiv(5,'SMTP - JeruxShop','smtp',0); return false;">SMTPs <span class="label label-primary label-as-badge" id="smtp"></span></a></li>  
           </ul>
         </li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Leads <span class="glyphicon glyphicon-chevron-down" id="all_leads"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="leads.html" onclick="pageDiv(6,'Leads - JeruxShop','leads.html',0); return false;">Leads <span class="label label-primary label-as-badge" id="leads"></span></a></li>
+            <li><a href="leads" onclick="pageDiv(6,'Leads - JeruxShop','leads',0); return false;">Leads <span class="label label-primary label-as-badge" id="leads"></span></a></li>
           </ul>
         </li>
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Accounts <span class="glyphicon glyphicon-chevron-down" id="accounts"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="premium.html" onclick="pageDiv(7,'Premium/Dating/Shop - JeruxShop','premium.html',0); return false;">Premium/Dating/Shop <span class="label label-primary label-as-badge" id="premium"></span></a></li>
-            <li><a href="banks.html" onclick="pageDiv(8,'Banks - JeruxShop','banks.html',0); return false;">Banks <span class="label label-primary label-as-badge" id="banks"></span></a></li>  
+            <li><a href="premium" onclick="pageDiv(7,'Premium/Dating/Shop - JeruxShop','premium',0); return false;">Premium/Dating/Shop <span class="label label-primary label-as-badge" id="premium"></span></a></li>
+            <li><a href="banks" onclick="pageDiv(8,'Banks - JeruxShop','banks',0); return false;">Banks <span class="label label-primary label-as-badge" id="banks"></span></a></li>  
           </ul>
         </li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Others <span class="glyphicon glyphicon-chevron-down" id="accounts"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="scampage.html" onclick="pageDiv(9,'Scampages - JeruxShop','scampage.html',0); return false;">Scampage <span class="label label-primary label-as-badge" id="scams"></span></a></li>
-            <li><a href="tutorial.html" onclick="pageDiv(10,'Tutorials - JeruxShop','tutorial.html',0); return false;">Tutorial <span class="label label-primary label-as-badge" id="tutorials"></span></a></li>  
+            <li><a href="scampage" onclick="pageDiv(9,'Scampages - JeruxShop','scampage',0); return false;">Scampage <span class="label label-primary label-as-badge" id="scams"></span></a></li>
+            <li><a href="tutorial" onclick="pageDiv(10,'Tutorials - JeruxShop','tutorial',0); return false;">Tutorial <span class="label label-primary label-as-badge" id="tutorials"></span></a></li>  
           </ul>
         </li>
                       
@@ -232,7 +232,7 @@ if ($reselerif == "1") {
     $q = mysqli_query($dbcon, "SELECT soldb FROM resseller WHERE username='$uid'") or die(mysqli_error());
     $r = mysqli_fetch_assoc($q);
 
-    echo '<li><a href="https://jerux.to/seller/index.html"><span class="badge" title="Seller Panel"><span class="glyphicon glyphicon-cloud"></span><span id="seller"></span></span></a></li>';
+    echo '<li><a href="https://jerux.to/seller/index"><span class="badge" title="Seller Panel"><span class="glyphicon glyphicon-cloud"></span><span id="seller"></span></span></a></li>';
 } else {
 } ?>      
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tickets <span id="alltickets">
@@ -245,14 +245,14 @@ if ($r844941 == "1") {
 ?>
 </span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="tickets.html" onclick="pageDiv(11,'Tickets - JeruxShop','tickets.html',0); return false;">Tickets <span class="label label-info"><span id="tickets"></span></span>	<?php
+            <li><a href="tickets" onclick="pageDiv(11,'Tickets - JeruxShop','tickets',0); return false;">Tickets <span class="label label-info"><span id="tickets"></span></span>	<?php
 $s1 = mysqli_query($dbcon, "SELECT * FROM ticket WHERE uid='$uid' and seen='1'");
 $r1 = mysqli_num_rows($s1);
 if ($r1 == "1") {
     echo '<span class="label label-success"> 1 New</span>';
 }
 ?></span></a></li>
-            <li><a href="reports.html" onclick="pageDiv(12,'Reports - JeruxShop','reports.html',0); return false;">Reports <span class="label label-info"><span id="reports"></span></span> <?php
+            <li><a href="reports" onclick="pageDiv(12,'Reports - JeruxShop','reports',0); return false;">Reports <span class="label label-info"><span id="reports"></span></span> <?php
 $s1 = mysqli_query($dbcon, "SELECT * FROM reports WHERE uid='$uid' and seen='1'");
 $r1 = mysqli_num_rows($s1);
 if ($r1 == "1") {
@@ -263,14 +263,14 @@ if ($r1 == "1") {
            </ul>
         </li>
 
-        <li><a href="addBalance.html" onclick="pageDiv(13,'Add Balance - JeruxShop','addBalance.html',0); return false;"><span class="badge"><b><span id="balance"></span></b> <span class="glyphicon glyphicon-plus"></span><span> </a></li>
+        <li><a href="addBalance" onclick="pageDiv(13,'Add Balance - JeruxShop','addBalance',0); return false;"><span class="badge"><b><span id="balance"></span></b> <span class="glyphicon glyphicon-plus"></span><span> </a></li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account  <span class="glyphicon glyphicon-user"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="setting.html" onclick="pageDiv(14,'Setting - JeruxShop','setting.html',0); return false;">Setting <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-            <li><a href="orders.html" onclick="pageDiv(15,'Orders - JeruxShop','orders.html',0); return false;">My Orders <span class="glyphicon glyphicon-shopping-cart pull-right"></span></a></li>
-            <li><a href="addBalance.html" onclick="pageDiv(13,'Add Balance - JeruxShop','addBalance.html',0); return false;">Add Balance <span class="glyphicon glyphicon-usd pull-right"></span></a></li>
+            <li><a href="setting" onclick="pageDiv(14,'Setting - JeruxShop','setting',0); return false;">Setting <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+            <li><a href="orders" onclick="pageDiv(15,'Orders - JeruxShop','orders',0); return false;">My Orders <span class="glyphicon glyphicon-shopping-cart pull-right"></span></a></li>
+            <li><a href="addBalance" onclick="pageDiv(13,'Add Balance - JeruxShop','addBalance',0); return false;">Add Balance <span class="glyphicon glyphicon-usd pull-right"></span></a></li>
             <li class="divider"></li>
-            <li><a href="logout.html" >Logout <span class="glyphicon glyphicon-off pull-right"></span></a></li>
+            <li><a href="logout" >Logout <span class="glyphicon glyphicon-off pull-right"></span></a></li>
           </ul>
         </li>
       </ul>
@@ -281,7 +281,88 @@ if ($r1 == "1") {
 </nav>
 <div id="mainDiv">
 
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade active in" id="addBalance">
+		<div id="balance">
+				<div class="container col-lg-6">
+					<h3>Add Balance</h3>
+			<form id="formAddBalance">
 
+					<div class="row">
+						<div class="form-group col-lg-12 ">
+							<label for="method">Method</label> 
+                <select name="methodpay" class="form-control" size="3" style="height: 100%;">
+                  <option value="BitcoinPayment" selected="">Bitcoin</option>
+                  <option value="PerfectMoneyPayment">Perfect Money</option>
+                </select>
+
+
+						</div>
+					</div>
+
+          					<div class="row">
+						<div class="form-group col-lg-6 ">
+							<label for="amount">Amount</label> <input placeholder="20" pattern="[0-9]*" type="text" name="amount" class="form-control input-normal" required="">
+						</div>
+					</div>
+<button type="submit" form="formAddBalance" class="btn btn-primary btn-md">Add Balance <span class="glyphicon glyphicon-plus"></span></button>
+				</div>
+
+			</form>
+
+		</div>
+            <div class="col-lg-6">
+
+            <div class="bs-component">
+            	<br><br>
+              <div class="well well">
+                        <ul>
+          <li>If you sent <b>Money</b> but it don't appear in your account please <a class="label label-default " href="tickets"><span class="glyphicon glyphicon-pencil"></span> Write Ticket</a></b></li>
+          <li>After payment funds will be added automatically to your account <b>INSTANTLY</b></li>
+          <li><b>PerfectMoney</b>/<b>Bitcoin</b> is a secure way to fund your account </li>
+		  <li>Min is 5 USD For Bitcoin</li>
+		  <li>Min is 10 USD For Perfect Money</li>
+          <li><b>Buyer Protection</b>
+            - any time you like , you can ask for <b>BALANCE REFUND !</b>       
+             </li>
+
+        </ul>
+              </div>
+          </div>		
+
+
+</div>
+</div>
+</div>
+<script>
+if(window.location.hash != "") {
+  $("#method").val(window.location.hash.substring(1));
+}
+
+$("#formAddBalance").submit(function() {
+$('button').prop('disabled', true);
+    $.ajax({
+           type: "POST",
+           url: 'addBalanceAction',
+           data: $("#formAddBalance").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+            if (data == 01) {
+              alert('Please enter a valid amount and Minimum of $5 for bitcoin / $10 for PM');
+              $('button').prop('disabled', false);
+
+             }             
+             if (data != 01 ) {
+              //$("#balance")(data).show();
+              pageDiv('payment'+data,'Add Balance - Olux SHOP','Payment?p_data='+data,0);
+             }
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+
+</script>
 </div>
 </body>
 </html>
