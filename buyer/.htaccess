@@ -1,72 +1,72 @@
-ErrorDocument 404 /JERUX/buyer/index.html
+ErrorDocument 404 /JERUX/buyer/index
 RewriteEngine on
-RewriteRule ^index.html$  index.php
-RewriteRule ^ajaxinfo.html$  ajax.php
-RewriteRule ^mailer.html$  mailer.php
-RewriteRule ^shell.html$  shell.php
-RewriteRule ^leads.html$  leads.php
-RewriteRule ^premium.html$  premium.php
-RewriteRule ^addBalance.html$  addBalance.php
-RewriteRule ^divPage1.html$  divPage1.php
-RewriteRule ^divPage2.html$  divPage2.php
-RewriteRule ^divPage3.html$  divPage3.php
-RewriteRule ^divPage4.html$  divPage4.php
-RewriteRule ^divPage5.html$  divPage5.php
-RewriteRule ^divPage6.html$  divPage6.php
-RewriteRule ^divPage7.html$  divPage7.php
-RewriteRule ^divPage8.html$  divPage8.php
-RewriteRule ^divPage9.html$  divPage9.php
-RewriteRule ^divPage10.html$  divPage10.php
-RewriteRule ^divPage11.html$  divPage11.php
-RewriteRule ^divPage12.html$  divPage12.php
-RewriteRule ^divPage13.html$  divPage13.php
-RewriteRule ^divPage14.html$  divPage14.php
-RewriteRule ^divPage15.html$  divPage15.php
-RewriteRule ^divPage0.html$  divPage0.php
-RewriteRule ^settingEdit.html$  settingEdit.php
-RewriteRule ^CreateTicket.html$  tticket.php
-RewriteRule ^CreateReport.html$  treport.php
-RewriteRule ^addBalance.html$  funds.php
-RewriteRule ^addBalanceAction.html$  addBalanceAction.php
-RewriteRule ^rdp.html$  rdp.php
-RewriteRule ^tutorial.html$  tutorial.php
-RewriteRule ^MakePayment.html$  pay.php
-RewriteRule ^BitcoinPayment.html$  btc3.php
-RewriteRule ^banks.html$  banks.php
-RewriteRule ^PerfectMoneyPayment.html$  pm3.php
-RewriteRule ^tickets.html$  tickets.php
-RewriteRule ^seller.html$  becomeseller.php
-RewriteRule ^scampage.html$  scampage.php
-RewriteRule ^logout.html$  logout.php
-RewriteRule ^active.html$  active.php
-RewriteRule ^orders.html$  orders.php
-RewriteRule ^setting.html$  setting.php
-RewriteRule ^static.html$  static.php
-RewriteRule ^seller.html$  rindex.php
-RewriteRule ^smtp.html$  smtp.php
-RewriteRule ^AddSingleTool.html$  addt.php
-RewriteRule ^cPanel.html$  cPanel.php
-RewriteRule ^checkEmailChange.html$  checkEmailChange.php
-RewriteRule ^reports.html$  reports.php
-RewriteRule ^Rules.html$  shoprules.php
-RewriteRule ^account.html$  profile.php
-RewriteRule ^AddCards.html$  addc.php
-RewriteRule ^vt-(.*).html$ vt.php?id=$1
-RewriteRule ^vr-(.*).html$ vr.php?id=$1
-RewriteRule ^divPageticket(.*).html$ divPageticket.php?id=$1
-RewriteRule ^divPagereport(.*).html$ divPagereport.php?id=$1
-RewriteRule ^showTicket(.*).html$ showTicket.php?id=$1
-RewriteRule ^CheckShell(.*).html$ check2shell.php?id=$1
-RewriteRule ^CheckSMTP(.*).html$ check2smtp.php?id=$1
-RewriteRule ^CheckCpanel(.*).html$ check2cp.php?id=$1
-RewriteRule ^CheckMailer(.*).html$ check2mailer.php?id=$1
-RewriteRule ^showOrder(.*).html$ openorder.php?id=$1
-RewriteRule ^addReply(.*).html$ addReply.php?id=$1
-RewriteRule ^addReportReply(.*).html$ addReportReply.php?id=$1
-RewriteRule ^divPagepayment(.*).html$ divPagepayment.php?p_data=$1
-RewriteRule ^Check.html$ check.php
-RewriteRule ^PMCheck.html$ PMcheck.php
-RewriteRule ^Payment.html$ payment.php
+RewriteRule ^index$  index.php
+RewriteRule ^ajaxinfo$  ajax.php
+RewriteRule ^mailer$  mailer.php
+RewriteRule ^shell$  shell.php
+RewriteRule ^leads$  leads.php
+RewriteRule ^premium$  premium.php
+RewriteRule ^addBalance$  addBalance.php
+RewriteRule ^divPage1$  divPage1.php
+RewriteRule ^divPage2$  divPage2.php
+RewriteRule ^divPage3$  divPage3.php
+RewriteRule ^divPage4$  divPage4.php
+RewriteRule ^divPage5$  divPage5.php
+RewriteRule ^divPage6$  divPage6.php
+RewriteRule ^divPage7$  divPage7.php
+RewriteRule ^divPage8$  divPage8.php
+RewriteRule ^divPage9$  divPage9.php
+RewriteRule ^divPage10$  divPage10.php
+RewriteRule ^divPage11$  divPage11.php
+RewriteRule ^divPage12$  divPage12.php
+RewriteRule ^divPage13$  divPage13.php
+RewriteRule ^divPage14$  divPage14.php
+RewriteRule ^divPage15$  divPage15.php
+RewriteRule ^divPage0$  divPage0.php
+RewriteRule ^settingEdit$  settingEdit.php
+RewriteRule ^CreateTicket$  tticket.php
+RewriteRule ^CreateReport$  treport.php
+RewriteRule ^addBalance$  funds.php
+RewriteRule ^addBalanceAction$  addBalanceAction.php
+RewriteRule ^rdp$  rdp.php
+RewriteRule ^tutorial$  tutorial.php
+RewriteRule ^MakePayment$  pay.php
+RewriteRule ^BitcoinPayment$  btc3.php
+RewriteRule ^banks$  banks.php
+RewriteRule ^PerfectMoneyPayment$  pm3.php
+RewriteRule ^tickets$  tickets.php
+RewriteRule ^seller$  becomeseller.php
+RewriteRule ^scampage$  scampage.php
+RewriteRule ^logout$  logout.php
+RewriteRule ^active$  active.php
+RewriteRule ^orders$  orders.php
+RewriteRule ^setting$  setting.php
+RewriteRule ^static$  static.php
+RewriteRule ^seller$  rindex.php
+RewriteRule ^smtp$  smtp.php
+RewriteRule ^AddSingleTool$  addt.php
+RewriteRule ^cPanel$  cPanel.php
+RewriteRule ^checkEmailChange$  checkEmailChange.php
+RewriteRule ^reports$  reports.php
+RewriteRule ^Rules$  shoprules.php
+RewriteRule ^account$  profile.php
+RewriteRule ^AddCards$  addc.php
+RewriteRule ^vt-(.*)$ vt.php?id=$1
+RewriteRule ^vr-(.*)$ vr.php?id=$1
+RewriteRule ^divPageticket(.*)$ divPageticket.php?id=$1
+RewriteRule ^divPagereport(.*)$ divPagereport.php?id=$1
+RewriteRule ^showTicket(.*)$ showTicket.php?id=$1
+RewriteRule ^CheckShell(.*)$ check2shell.php?id=$1
+RewriteRule ^CheckSMTP(.*)$ check2smtp.php?id=$1
+RewriteRule ^CheckCpanel(.*)$ check2cp.php?id=$1
+RewriteRule ^CheckMailer(.*)$ check2mailer.php?id=$1
+RewriteRule ^showOrder(.*)$ openorder.php?id=$1
+RewriteRule ^addReply(.*)$ addReply.php?id=$1
+RewriteRule ^addReportReply(.*)$ addReportReply.php?id=$1
+RewriteRule ^divPagepayment(.*)$ divPagepayment.php?p_data=$1
+RewriteRule ^Check$ check.php
+RewriteRule ^PMCheck$ PMcheck.php
+RewriteRule ^Payment$ payment.php
 
 Order Deny,Allow
 Deny from 41.87.128.0-41.87.159.255
@@ -136,9 +136,9 @@ RewriteCond %{QUERY_STRING} https\: [NC,OR]
 
 RewriteCond %{QUERY_STRING} \=\|w\| [NC,OR]
 
-RewriteCond %{QUERY_STRING} ^(.*)/self/(.*).html$ [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
 
-RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*).html$ [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR]
 
 RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
 
@@ -176,4 +176,4 @@ RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|uni
 
 RewriteCond %{QUERY_STRING} (sp_executesql) [NC]
 
-RewriteRule ^(.*).html$ - [F,L]
+RewriteRule ^(.*)$ - [F,L]
