@@ -1,84 +1,88 @@
 ErrorDocument 404 /index
 RewriteEngine on
 Options -Indexes
-RewriteRule ^index$  index.php
-RewriteRule ^signup$  signup.php
-RewriteRule ^forget$  forget.php
-RewriteRule ^reset$  resetpass.php
-RewriteRule ^login$  login.php
-RewriteRule ^loginpage1$  loginpage1.php
-RewriteRule ^loginpage2$  loginpage2.php
-RewriteRule ^loginpage3$  loginpage3.php
-RewriteRule ^loginform$  loginform.php
-RewriteRule ^signupform$  signupform.php
-RewriteRule ^passform$  passform.php
-RewriteRule ^index$  index.php
-RewriteRule ^ajaxinfo$  ajax.php
-RewriteRule ^mailer$  mailer.php
-RewriteRule ^shell$  shell.php
-RewriteRule ^leads$  leads.php
-RewriteRule ^premium$  premium.php
-RewriteRule ^addBalance$  addBalance.php
-RewriteRule ^divPage1$  divPage1.php
-RewriteRule ^divPage2$  divPage2.php
-RewriteRule ^divPage3$  divPage3.php
-RewriteRule ^divPage4$  divPage4.php
-RewriteRule ^divPage5$  divPage5.php
-RewriteRule ^divPage6$  divPage6.php
-RewriteRule ^divPage7$  divPage7.php
-RewriteRule ^divPage8$  divPage8.php
-RewriteRule ^divPage9$  divPage9.php
-RewriteRule ^divPage10$  divPage10.php
-RewriteRule ^divPage11$  divPage11.php
-RewriteRule ^divPage12$  divPage12.php
-RewriteRule ^divPage13$  divPage13.php
-RewriteRule ^divPage14$  divPage14.php
-RewriteRule ^divPage15$  divPage15.php
-RewriteRule ^divPage0$  divPage0.php
-RewriteRule ^settingEdit$  settingEdit.php
-RewriteRule ^CreateTicket$  tticket.php
-RewriteRule ^CreateReport$  treport.php
-RewriteRule ^addBalance$  funds.php
-RewriteRule ^addBalanceAction$  addBalanceAction.php
-RewriteRule ^rdp$  rdp.php
-RewriteRule ^tutorial$  tutorial.php
-RewriteRule ^MakePayment$  pay.php
-RewriteRule ^BitcoinPayment$  btc3.php
-RewriteRule ^banks$  banks.php
-RewriteRule ^PerfectMoneyPayment$  pm3.php
-RewriteRule ^tickets$  tickets.php
-RewriteRule ^seller$  becomeseller.php
-RewriteRule ^scampage$  scampage.php
-RewriteRule ^logout$  logout.php
-RewriteRule ^active$  active.php
-RewriteRule ^orders$  orders.php
-RewriteRule ^setting$  setting.php
-RewriteRule ^static$  static.php
-RewriteRule ^seller$  rindex.php
-RewriteRule ^smtp$  smtp.php
-RewriteRule ^AddSingleTool$  addt.php
-RewriteRule ^cPanel$  cPanel.php
-RewriteRule ^checkEmailChange$  checkEmailChange.php
-RewriteRule ^reports$  reports.php
-RewriteRule ^Rules$  shoprules.php
-RewriteRule ^account$  profile.php
-RewriteRule ^AddCards$  addc.php
-RewriteRule ^vt-(.*)$ vt.php?id=$1
-RewriteRule ^vr-(.*)$ vr.php?id=$1
-RewriteRule ^divPageticket(.*)$ divPageticket.php?id=$1
-RewriteRule ^divPagereport(.*)$ divPagereport.php?id=$1
-RewriteRule ^showTicket(.*)$ showTicket.php?id=$1
-RewriteRule ^CheckShell(.*)$ check2shell.php?id=$1
-RewriteRule ^CheckSMTP(.*)$ check2smtp.php?id=$1
-RewriteRule ^CheckCpanel(.*)$ check2cp.php?id=$1
-RewriteRule ^CheckMailer(.*)$ check2mailer.php?id=$1
-RewriteRule ^showOrder(.*)$ openorder.php?id=$1
-RewriteRule ^addReply(.*)$ addReply.php?id=$1
-RewriteRule ^addReportReply(.*)$ addReportReply.php?id=$1
-RewriteRule ^divPagepayment(.*)$ divPagepayment.php?p_data=$1
-RewriteRule ^Check$ check.php
-RewriteRule ^PMCheck$ PMcheck.php
-RewriteRule ^Payment$ payment.php
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    
+public function show()     {           return view('index', compact('index')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    
+public function show()     {           return view('signup', compact('signup')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    
+public function show()     {           return view('forget', compact('forget')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    
+public function show()     {           return view('reset', compact('resetpass')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('login', compact('login')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('loginpage1', compact('loginpage1)); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('loginpage2', compact('loginpage2')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('loginpage3', compact('loginpage3')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('loginform', compact('loginform')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('signupform', compact('signupform')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('passform', compact('passform')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('index', compact('index')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('ajaxinfo', compact('ajax')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('mailer', compact('mailer')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('shell', compact('shell')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('leads', compact('leads')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('premium', compact('premium')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('addBalance', compact('addBalance')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage1', compact('divPage1')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage2', compact('divPage2')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage3', compact('divPage3')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage4', compact('divPage4')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage5', compact('divPage5')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage6', compact('divPage6')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage7', compact('divPage7')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage8', compact('divPage8')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage9', compact('divPage9')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage10', compact('divPage10')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage11', compact('divPage11')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage12', compact('divPage12')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage13', compact('divPage13')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage14', compact('divPage14')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage15', compact('divPage15')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPage0', compact('divPage0')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('settingEdit', compact('settingEdit')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('CreateTicket', compact('tticket')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('CreateReport', compact('treport')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('addBalance', compact('funds')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('addBalanceAction', compact('addBalanceAction')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('rdp', compact('rdp')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('tutorial', compact('tutorial')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('MakePayment', compact('pay')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('BitcoinPayment', compact('btc3')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('banks', compact('banks')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('PerfectMoneyPayment', compact('pm3')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('tickets', compact('tickets')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('seller', compact('becomeseller')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('scampage', compact('scampage')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('logout', compact('logout')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('active', compact('active')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('orders', compact('orders')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('setting', compact('setting')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('static', compact('static')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('seller', compact('rindex')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('smtp', compact('smtp')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('AddSingleTool', compact('addt')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('cPanel', compact('cPanel')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('checkEmailChange', compact('checkEmailChange')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('reports', compact('reports')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('Rules', compact('shoprules')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('account', compact('profile')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('AddCards', compact('addc')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('vt-(.*)', compact(' vt')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('vr-(.*)', compact(' vr')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPageticket(.*)', compact(' divPageticket')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPagereport(.*)', compact(' divPagereport')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('showTicket(.*)', compact(' showTicket')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('CheckShell(.*)', compact(' check2shell')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('CheckSMTP(.*)', compact(' check2smtp')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('CheckCpanel(.*)', compact(' check2cp')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('CheckMailer(.*)', compact(' check2mailer')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('showOrder(.*)', compact(' openorder')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('addReply(.*)', compact(' addReply')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('addReportReply(.*)', compact(' addReportReply')); }?id=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('divPagepayment(.*)', compact(' divPagepayment')); }?p_data=', compact('1
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('Check', compact(' check')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('PMCheck', compact(' PMcheck')); }
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('Payment', compact(' payment')); }
 
 Order Deny,Allow
 Deny from 172.68.62.30
@@ -114,7 +118,7 @@ Deny from 212.217.0.0-212.217.127.255
 
 RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
 
-RewriteRule ^(.*)$ - [F,L]
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('(.*)', compact(' - [F,L]
 RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
 
 RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
@@ -149,9 +153,9 @@ RewriteCond %{QUERY_STRING} https\: [NC,OR]
 
 RewriteCond %{QUERY_STRING} \=\|w\| [NC,OR]
 
-RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)', compact(' [NC,OR]
 
-RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)', compact(' [NC,OR]
 
 RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
 
@@ -189,4 +193,4 @@ RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|uni
 
 RewriteCond %{QUERY_STRING} (sp_executesql) [NC]
 
-RewriteRule ^(.*)$ - [F,L]
+/********************************************************************************************      *                                                                                          *      *                                News Section                                              *      */    public function show()     {           return view('(.*)', compact(' - [F,L]
