@@ -223,16 +223,16 @@ function hideTooltip(btn) {
       </ul>
       <ul class="nav navbar-nav navbar-right">
                         <?php
-$uid = mysqli_real_escape_string($dbcon, $_SESSION['sname']);
-$q = mysqli_query($dbcon, "SELECT resseller FROM users WHERE username='$uid'") or die(mysqli_error());
-$r         = mysqli_fetch_assoc($q);
-$reselerif = $r['resseller'];
-if ($reselerif == "1") {
-    $uid = mysqli_real_escape_string($dbcon, $_SESSION['sname']);
-    $q = mysqli_query($dbcon, "SELECT soldb FROM resseller WHERE username='$uid'") or die(mysqli_error());
-    $r = mysqli_fetch_assoc($q);
+$resseller_user_id = mysqli_real_escape_string($dbcon, $_SESSION['UsersUsername']);
+$request_access = mysqli_query($dbcon, "SELECT resseller FROM users WHERE username='$resseller_user_id'") or die(mysqli_error());
+$reject_access         = mysqli_fetch_assoc($request_access);
+$ifNotResseller = $reject_access['resseller'];
+if ($ifNotResseller == "1") {
+    $resseller_user_id = mysqli_real_escape_string($dbcon, $_SESSION['UsersUsername']);
+    $request_access = mysqli_query($dbcon, "SELECT soldb FROM resseller WHERE username='$resseller_user_id'") or die(mysqli_error());
+    $reject_access = mysqli_fetch_assoc($request_access);
 
-    echo '<li><a href="https://jerux.to/seller/index.html"><span class="badge" title="Seller Panel"><span class="glyphicon glyphicon-cloud"></span><span id="seller"></span></span></a></li>';
+    echo '<li><a href="/seller/index.html"><span class="badge" title="Seller Panel"><span class="glyphicon glyphicon-cloud"></span><span id="seller"></span></span></a></li>';
 } else {
 } ?>      
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tickets <span id="alltickets">
