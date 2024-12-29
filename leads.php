@@ -4,11 +4,11 @@ session_start();
 date_default_timezone_set('UTC');
 include "includes/config.php";
 
-if (!isset($_SESSION['sname']) and !isset($_SESSION['spass'])) {
+if (!isset($_SESSION['UsersUsername']) and !isset($_SESSION['UsersPassword'])) {
     header("location: ../");
     exit();
 }
-$usrid = mysqli_real_escape_string($dbcon, $_SESSION['sname']);
+$user_id = mysqli_real_escape_string($dbcon, $_SESSION['UsersUsername']);
 ?>
 <!doctype html>
 <html>
