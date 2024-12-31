@@ -155,90 +155,460 @@
     </script>
 </head>
 
+
+ 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand" onClick="location.href='index.html'" onMouseOver="this.style.cursor='pointer'">
-                    <b><span class="glyphicon glyphicon-fire"></span> Jerux SHOP <small><span class="glyphicon glyphicon-refresh"></span></small></b>
-                </div>
-            </div>
-
-            <div class="collapse navbar-collapse" id="topFixedNavbar1">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hosts <span class="glyphicon glyphicon-chevron-down" id="alhosts"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="rdp.html" onclick="pageDiv(1,'RDP - JeruxShop','rdp.html',0); return false;">RDPs <span class="label label-primary label-as-badge" id="rdp"></span></a></li>
-                            <li><a href="cPanel.html" onclick="pageDiv(2,'cPanel - JeruxShop','cPanel.html',0); return false;">cPanels <span class="label label-primary label-as-badge" id="cpanel"></span></a></li>
-                            <li><a href="shell.html" onclick="pageDiv(3,'Shell - JeruxShop','shell.html',0); return false;">Shells <span class="label label-primary label-as-badge" id="shell"></span></a></li>  
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Send <span class="glyphicon glyphicon-chevron-down" id="mail"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="mailer.html" onclick="pageDiv(4,'PHP Mailer - JeruxShop','mailer.html',0); return false;">Mailers <span class="label label-primary label-as-badge" id="mailer"></span></a></li>
-                            <li><a href="smtp.html" onclick="pageDiv(5,'SMTP - JeruxShop','smtp.html',0); return false;">SMTPs <span class="label label-primary label-as-badge" id="smtp"></span></a></li>  
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Leads <span class="glyphicon glyphicon-chevron-down" id="all_leads"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="leads.html" onclick="pageDiv(6,'Leads - JeruxShop','leads.html',0); return false;">Leads <span class="label label-primary label-as-badge" id="leads"></span></a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Accounts <span class="glyphicon glyphicon-chevron-down" id="accounts"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="premium.html" onclick="pageDiv(7,'Premium/Dating/Shop - JeruxShop','premium.html',0); return false;">Premium/Dating/Shop <span class="label label-primary label-as-badge" id="premium"></span></a></li>
-                            <li><a href="banks.html" onclick="pageDiv(8,'Banks - JeruxShop','banks.html',0); return false;">Banks <span class="label label-primary label-as-badge" id="banks"></span></a></li>  
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Others <span class="glyphicon glyphicon-chevron-down" id="accounts"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="scampage.html" onclick="pageDiv(9,'Scampages - JeruxShop','scampage.html',0); return false;">Scampage <span class="label label-primary label-as-badge" id="scams"></span></a></li>
-                            <li><a href="tutorial.html" onclick="pageDiv(10,'Tutorials - JeruxShop','tutorial.html',0); return false;">Tutorial <span class="label label-primary label-as-badge" id="tutorials"></span></a></li>  
-                        </ul>
-                    </li>                    
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="https://jerux.to/seller/index.html"><span class="badge" title="Seller Panel"><span class="glyphicon glyphicon-cloud"></span><span id="seller"></span></span></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tickets <span id="alltickets">
-                            <span class="label label-danger">1</span></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="tickets.html" onclick="pageDiv(11,'Tickets - JeruxShop','tickets.html',0); return false;">Tickets <span class="label label-info"><span id="tickets"></span></span>
-                                <span class="label label-success"> 1 New</span></a></li>
-                            <li><a href="reports.html" onclick="pageDiv(12,'Reports - JeruxShop','reports.html',0); return false;">Reports <span class="label label-info"><span id="reports"></span></span>
-                                <span class="label label-success"> 1 New</span></a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="addBalance.html" onclick="pageDiv(13,'Add Balance - JeruxShop','addBalance.html',0); return false;"><span class="badge"><b><span id="balance"></span></b> <span class="glyphicon glyphicon-plus"></span></span></a></li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="glyphicon glyphicon-user"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="setting.html" onclick="pageDiv(14,'Setting - JeruxShop','setting.html',0); return false;">Setting <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                            <li><a href="orders.html" onclick="pageDiv(15,'Orders - JeruxShop','orders.html',0); return false;">My Orders <span class="glyphicon glyphicon-shopping-cart pull-right"></span></a></li>
-                            <li><a href="addBalance.html" onclick="pageDiv(13,'Add Balance - JeruxShop','addBalance.html',0); return false;">Add Balance <span class="glyphicon glyphicon-usd pull-right"></span></a></li>
-                            <li class="divider"></li>
-                            <li><a href="logout.html">Logout <span class="glyphicon glyphicon-off pull-right"></span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+    <nav id="navbar_id" class="navbar navbar-expand-lg navbar-dark bg-white fixed-top">
+ 
+ 
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2 home_nav">
+ 
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="main_site_name nav-item nav-link active" href="https://xleet.is/homepage">
+ 
+                        <i class="middle fab fa-2x fa-redhat pink-color"></i>
+ 
+                        <span class='middle site_name_span'>xLeet</span>
+ 
+                    </a>
+                </li>
+ 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHosts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-server orange-color"></i> Hosts
+                    </a>
+ 
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownHosts">
+ 
+                        <a class="dropdown-item " data-title="Cpanels" href="https://xleet.is/cpanels">
+                            Cpanels <span class="badge badge-info d-blue-background">32355</span>
+                        </a>
+ 
+                        <a class="dropdown-item " data-title="Shells" href="https://xleet.is/shells">
+                            Shells <span class="badge badge-info d-blue-background">5088</span>
+                        </a>
+ 
+                        <a class="dropdown-item " data-title="SSH\WHM" href="https://xleet.is/ssh">
+                            SSH\WHM <span class="badge badge-info d-blue-background">2041</span>
+                        </a>
+ 
+                        <a class="dropdown-item " data-title="RDP" href="https://xleet.is/rdp">
+                            RDP <span class="badge badge-info d-blue-background">4586</span>
+                        </a>
+ 
+ 
+                    </div>
+                </li>
+ 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSend" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-paper-plane text-primary"></i> Send
+                    </a>
+ 
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownSend">
+ 
+                        <a class="dropdown-item " data-title="SMTP" href="https://xleet.is/smtp">
+                            SMTP <span class="badge badge-info d-blue-background">7454</span>
+                        </a>
+ 
+                        <a class="dropdown-item" data-title="Mailers" href="https://xleet.is/mailers">
+                            Mailers <span class="badge badge-info d-blue-background">70</span>
+                        </a>
+ 
+                    </div>
+                </li>
+ 
+ 
+ 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLeads" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-address-book pink-color"></i> Leads
+                    </a>
+ 
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownLeads">
+ 
+ 
+ 
+                        <a class="dropdown-item" data-title="Leads 100% Checked Email list" href="https://xleet.is/leads?type=100%25%20Checked%20Email%20list">
+                            <span class="fa fa-fire orange-color"></span>
+ 
+                            100% Checked Email list <span class="badge badge-info d-blue-background">98</span>
+                        </a>
+ 
+                        <a class="dropdown-item" data-title="Leads Email Only" href="https://xleet.is/leads?type=Email%20Only">
+                            Email Only <span class="badge badge-info d-blue-background">2884</span>
+                        </a>
+ 
+                        <a class="dropdown-item" data-title="Leads Combo Email:Password" href="https://xleet.is/leads?type=Combo%20Email%3APassword">
+                            Combo Email:Password <span class="badge badge-info d-blue-background">1064</span>
+                        </a>
+ 
+                        <a class="dropdown-item" data-title="Leads Combo Username:Password" href="https://xleet.is/leads?type=Combo%20Username%3APassword">
+                            Combo Username:Password <span class="badge badge-info d-blue-background">46</span>
+                        </a>
+ 
+                        <a class="dropdown-item" data-title="Leads Email Access" href="https://xleet.is/leads?type=Email%20Access">
+                            Email Access <span class="badge badge-info d-blue-background">39</span>
+                        </a>
+ 
+                        <a class="dropdown-item" data-title="Leads Combo Email:Hash" href="https://xleet.is/leads?type=Combo%20Email%3AHash">
+                            Combo Email:Hash <span class="badge badge-info d-blue-background">116</span>
+                        </a>
+ 
+                        <a class="dropdown-item" data-title="Leads Phone Number Only" href="https://xleet.is/leads?type=Phone%20Number%20Only">
+                            Phone Number Only <span class="badge badge-info d-blue-background">458</span>
+                        </a>
+ 
+                        <a class="dropdown-item" data-title="Leads Combo Phone:Password" href="https://xleet.is/leads?type=Combo%20Phone%3APassword">
+                            Combo Phone:Password <span class="badge badge-info d-blue-background">46</span>
+                        </a>
+ 
+                        <a class="dropdown-item" data-title="Leads Full Data" href="https://xleet.is/leads?type=Full%20Data">
+                            Full Data <span class="badge badge-info d-blue-background">42</span>
+                        </a>
+ 
+                        <a class="dropdown-item" data-title="Leads Social Media Data" href="https://xleet.is/leads?type=Social%20Media%20Data">
+                            Social Media Data <span class="badge badge-info d-blue-background">1</span>
+                        </a>
+ 
+                    </div>
+                </li>
+ 
+ 
+ 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBusiness" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-briefcase green-color"></i> Business
+                    </a>
+ 
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownBusiness">
+ 
+                        <a class="dropdown-item" data-title="Cpanel Webmail " href="https://xleet.is/webmail?type=Cpanel%20Webmail">
+                            Cpanel Webmail <span class="badge badge-info d-blue-background">22037</span>
+                        </a>
+                        <a class="dropdown-item" data-title="Godaddy Webmail " href="https://xleet.is/webmail?type=Godaddy%20Webmail">
+                            Godaddy Webmail <span class="badge badge-info d-blue-background">1513</span>
+                        </a>
+                        <a class="dropdown-item" data-title="Office Godaddy Webmail " href="https://xleet.is/webmail?type=Office%20Godaddy%20Webmail">
+                            Office Godaddy Webmail <span class="badge badge-info d-blue-background">3359</span>
+                        </a>
+                        <a class="dropdown-item" data-title="Office365 Webmail " href="https://xleet.is/webmail?type=Office365%20Webmail">
+                            Office365 Webmail <span class="badge badge-info d-blue-background">105579</span>
+                        </a>
+                        <a class="dropdown-item" data-title="Ionos Webmail " href="https://xleet.is/webmail?type=Ionos%20Webmail">
+                            Ionos Webmail <span class="badge badge-info d-blue-background">755</span>
+                        </a>
+ 
+                    </div>
+                </li>
+ 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAccounts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-users salmon-color"></i> Accounts
+ 
+                    </a>
+ 
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownAccounts">
+ 
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Email Marketing  {SendGrid, Amazon Aws.... etc }" href="https://xleet.is/accounts/1">
+                            Email Marketing {SendGrid, Amazon Aws.... etc }
+ 
+                            <span class="badge badge-info d-blue-background">
+                                5211
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Webmail Business" href="https://xleet.is/accounts/18">
+                            Webmail Business
+ 
+                            <span class="badge badge-info d-blue-background">
+                                51094
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Marketing Tools" href="https://xleet.is/accounts/16">
+                            Marketing Tools
+ 
+                            <span class="badge badge-info d-blue-background">
+                                28
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Hosting/Domain" href="https://xleet.is/accounts/14">
+                            Hosting/Domain
+ 
+                            <span class="badge badge-info d-blue-background">
+                                753
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Games" href="https://xleet.is/accounts/2">
+                            Games
+ 
+                            <span class="badge badge-info d-blue-background">
+                                242
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Graphic / Developer" href="https://xleet.is/accounts/17">
+                            Graphic / Developer
+ 
+                            <span class="badge badge-info d-blue-background">
+                                96
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - VPN/Socks Proxy" href="https://xleet.is/accounts/3">
+                            VPN/Socks Proxy
+ 
+                            <span class="badge badge-info d-blue-background">
+                                3417
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Shopping {Amazon, eBay .... etc }" href="https://xleet.is/accounts/4">
+                            Shopping {Amazon, eBay .... etc }
+ 
+                            <span class="badge badge-info d-blue-background">
+                                77
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Program { antivirus, Adobe .... etc }" href="https://xleet.is/accounts/7">
+                            Program { antivirus, Adobe .... etc }
+ 
+                            <span class="badge badge-info d-blue-background">
+                                160
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Stream { Music, Netflix, iptv, HBO, bein sport, WWE ...etc }" href="https://xleet.is/accounts/8">
+                            Stream { Music, Netflix, iptv, HBO, bein sport, WWE ...etc }
+ 
+                            <span class="badge badge-info d-blue-background">
+                                2411
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Dating" href="https://xleet.is/accounts/9">
+                            Dating
+ 
+                            <span class="badge badge-info d-blue-background">
+                                1522
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Learning { udemy, lynda, .... etc. }" href="https://xleet.is/accounts/10">
+                            Learning { udemy, lynda, .... etc. }
+ 
+                            <span class="badge badge-info d-blue-background">
+                                900
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Torrent / File Host" href="https://xleet.is/accounts/11">
+                            Torrent / File Host
+ 
+                            <span class="badge badge-info d-blue-background">
+                                101
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Voip / Sip" href="https://xleet.is/accounts/12">
+                            Voip / Sip
+ 
+                            <span class="badge badge-info d-blue-background">
+                                6
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Social Media" href="https://xleet.is/accounts/15">
+                            Social Media
+ 
+                            <span class="badge badge-info d-blue-background">
+                                57
+ 
+                            </span>
+                        </a>
+ 
+ 
+                        <a class="dropdown-item" data-title=" Accounts - Other" href="https://xleet.is/accounts/13">
+                            Other
+ 
+                            <span class="badge badge-info d-blue-background">
+                                1487
+ 
+                            </span>
+                        </a>
+ 
+ 
+                    </div>
+                </li>
+ 
+ 
+ 
+ 
+ 
+            </ul>
+ 
+ 
         </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+ 
+                <span class="fa fa-bars"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 user_nav">
+            <ul class="navbar-nav ml-auto">
+ 
+                <div id="notifications_container" data-href="https://xleet.is/notifications/get">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownNotifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell red-color"></i>
+ 
+                            <div class='badge badge-info d-blue-background'>
+                                0
+                            </div>
+ 
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownNotifications">
+ 
+ 
+                            <a class="dropdown-item" href="javascript:;">
+                                No Notifications
+                            </a>
+ 
+ 
+ 
+                        </div>
+                    </li>
+ 
+                </div>
+ 
+ 
+ 
+ 
+ 
+                <li class="nav-item">
+                    <a class="nav-item nav-link " data-title="Add Balance" href="https://xleet.is/add-balance">
+                        <div class='badge badge-danger'><span id="buyer_balance">0.07</span> <i class="fa fa-plus"></i> </div>
+ 
+                    </a>
+                </li>
+ 
+ 
+ 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tickets
+ 
+                        <span class="badge badge-success">0</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item" data-title="My Tickets " href="https://xleet.is/tickets">My Tickets
+ 
+ 
+ 
+ 
+ 
+                            <a class="dropdown-item" data-title="My Reports" href="https://xleet.is/reports">My Reports
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                            </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account <i class="fa fa-user-secret"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+ 
+ 
+ 
+                        <a class="dropdown-item" data-title="Settings" href="https://xleet.is/user/settings">Settings <i class="fa fa-cog"></i></a>
+ 
+ 
+                        <a class="dropdown-item" data-title="Orders" href="https://xleet.is/orders">Orders
+ 
+                            <span class="badge badge-success">
+                                27
+                            </span>
+ 
+                            <i class="fa fa-shopping-cart"></i></a>
+ 
+ 
+ 
+                        <a class="dropdown-item" data-title="Add Balance" href="https://xleet.is/add-balance">Add Balance
+ 
+ 
+                            <i class="fa fa-money-bill-alt"></i></a>
+ 
+ 
+ 
+ 
+ 
+ 
+                        <a class="dropdown-item noAjax" href="https://xleet.is/logout">Logout <i class="fa fa-door-open"></i></a>
+ 
+ 
+                    </div>
+                </li>
+ 
+ 
+            </ul>
+        </div>
+ 
+ 
     </nav>
-
+ 
+    <script>
+        $('ul.navbar-nav li.dropdown').hover(function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(500);
+        }, function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(500);
+        });
+    </script>
+              
+        
     <div id="mainDiv"></div>
 </body>
 </html>
