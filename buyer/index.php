@@ -163,7 +163,11 @@ $usrid = mysqli_real_escape_string($dbcon, $_SESSION['sname']);
     }
 }
 </style>
-
+<header>
+       
+	<?php require_once("header.php"); ?>
+    <!-- END Header Loader -->
+</header>
 
 <script type="text/javascript">
              function ajaxinfo() {
