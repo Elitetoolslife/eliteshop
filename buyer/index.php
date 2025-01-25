@@ -171,46 +171,17 @@ $usrid = mysqli_real_escape_string($dbcon, $_SESSION['sname']);
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/js/bootstrap-notify.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.css">
-<div class='notifications top-right'>
-  
-  
-</div>
-
-
-
-<script type="text/javascript">
-             function ajaxinfo() {
-                $.ajax({
-                    type: 'GET',
-                    url: 'ajaxinfo.html',
-                    timeout: 10000,
-
-                    success: function(data) {
-                        if (data != '01') {
-                            var data = JSON.parse(data);
-                            for (var prop in data) {
-                                $("#" + prop).html(data[prop]).show();
-                            }
-                        } else {
-                            window.location = "logout.html";
-                        }
-                    }
-                });
-
-            }
-            setInterval(function() {
-                ajaxinfo()
-            }, 3000);
-
-            ajaxinfo();
-</script>
+<header class="page-ajax-content">
+	<?php require_once("ajax.php"); ?>
 		<style>
             .navbar {
                 background-color: #001f3f;
             }
         </style>
+</header>
+
+
+
 <body style="padding-top: 70px; padding-bottom: 70px;">
 
 <nav class="navbar navbar-default navbar-fixed-top ">
