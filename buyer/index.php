@@ -182,167 +182,2084 @@ $usrid = mysqli_real_escape_string($dbcon, $_SESSION['sname']);
 
 
 
-<body style="padding-top: 70px; padding-bottom: 70px;">
 
-<nav class="navbar navbar-default navbar-fixed-top ">
-  <div class="container-fluid">
-    <div class="navbar-header">
-       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-    <div class="navbar-brand" onClick="location.href='index.html'" onMouseOver="this.style.cursor='pointer'"><b><span class="glyphicon glyphicon-fire"></span> Jerux SHOP <small><span class="glyphicon glyphicon-refresh"></span></small></b></div></div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="topFixedNavbar1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hosts <span class="glyphicon glyphicon-chevron-down" id="alhosts"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="rdp.html" onclick="pageDiv(1,'RDP - JeruxShop','rdp.html',0); return false;">RDPs <span class="label label-primary label-as-badge" id="rdp"></span></a></li>
-            <li><a href="cPanel.html" onclick="pageDiv(2,'cPanel - JeruxShop','cPanel.html',0); return false;">cPanels <span class="label label-primary label-as-badge" id="cpanel"></span></a></li>
-            <li><a href="shell.html" onclick="pageDiv(3,'Shell - JeruxShop','shell.html',0); return false;">Shells <span class="label label-primary label-as-badge" id="shell"></span></a></li>  
-          </ul>
-        </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Send <span class="glyphicon glyphicon-chevron-down" id="mail"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="mailer.html" onclick="pageDiv(4,'PHP Mailer - JeruxShop','mailer.html',0); return false;">Mailers <span class="label label-primary label-as-badge" id="mailer"></span></a></li>
-            <li><a href="smtp.html" onclick="pageDiv(5,'SMTP - JeruxShop','smtp.html',0); return false;">SMTPs <span class="label label-primary label-as-badge" id="smtp"></span></a></li>  
-          </ul>
-        </li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Leads <span class="glyphicon glyphicon-chevron-down" id="all_leads"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="leads.html" onclick="pageDiv(6,'Leads - JeruxShop','leads.html',0); return false;">Leads <span class="label label-primary label-as-badge" id="leads"></span></a></li>
-          </ul>
-        </li>
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Accounts <span class="glyphicon glyphicon-chevron-down" id="accounts"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="premium.html" onclick="pageDiv(7,'Premium/Dating/Shop - JeruxShop','premium.html',0); return false;">Premium/Dating/Shop <span class="label label-primary label-as-badge" id="premium"></span></a></li>
-            <li><a href="banks.html" onclick="pageDiv(8,'Banks - JeruxShop','banks.html',0); return false;">Banks <span class="label label-primary label-as-badge" id="banks"></span></a></li>  
-          </ul>
-        </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Others <span class="glyphicon glyphicon-chevron-down" id="accounts"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="scampage.html" onclick="pageDiv(9,'Scampages - JeruxShop','scampage.html',0); return false;">Scampage <span class="label label-primary label-as-badge" id="scams"></span></a></li>
-            <li><a href="tutorial.html" onclick="pageDiv(10,'Tutorials - JeruxShop','tutorial.html',0); return false;">Tutorial <span class="label label-primary label-as-badge" id="tutorials"></span></a></li>  
-          </ul>
-        </li>
-                      
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-                        <?php
-$uid = mysqli_real_escape_string($dbcon, $_SESSION['sname']);
-$q = mysqli_query($dbcon, "SELECT resseller FROM users WHERE username='$uid'") or die(mysqli_error());
-$r         = mysqli_fetch_assoc($q);
-$reselerif = $r['resseller'];
-if ($reselerif == "1") {
-    $uid = mysqli_real_escape_string($dbcon, $_SESSION['sname']);
-    $q = mysqli_query($dbcon, "SELECT soldb FROM resseller WHERE username='$uid'") or die(mysqli_error());
-    $r = mysqli_fetch_assoc($q);
-
-    echo '<li><a href="https://jerux.to/seller/index.html"><span class="badge" title="Seller Panel"><span class="glyphicon glyphicon-cloud"></span><span id="seller"></span></span></a></li>';
-} else {
-} ?>      
-<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tickets <span id="alltickets">
-<?php
-$sze112  = mysqli_query($dbcon, "SELECT * FROM ticket WHERE uid='$uid' and seen='1'");
-$r844941 = mysqli_num_rows($sze112);
-if ($r844941 == "1") {
-    echo '<span class="label label-danger">1</span>';
-}
-?>
-</span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="tickets.html" onclick="pageDiv(11,'Tickets - JeruxShop','tickets.html',0); return false;">Tickets <span class="label label-info"><span id="tickets"></span></span>	<?php
-$s1 = mysqli_query($dbcon, "SELECT * FROM ticket WHERE uid='$uid' and seen='1'");
-$r1 = mysqli_num_rows($s1);
-if ($r1 == "1") {
-    echo '<span class="label label-success"> 1 New</span>';
-}
-?></span></a></li>
-            <li><a href="reports.html" onclick="pageDiv(12,'Reports - JeruxShop','reports.html',0); return false;">Reports <span class="label label-info"><span id="reports"></span></span> <?php
-$s1 = mysqli_query($dbcon, "SELECT * FROM reports WHERE uid='$uid' and seen='1'");
-$r1 = mysqli_num_rows($s1);
-if ($r1 == "1") {
-    echo '<span class="label label-success"> 1 New</span>';
-}
-?></span> </a></li>
-
-           </ul>
-        </li>
-
-        <li><a href="addBalance.html" onclick="pageDiv(13,'Add Balance - JeruxShop','addBalance.html',0); return false;"><span class="badge"><b><span id="balance"></span></b> <span class="glyphicon glyphicon-plus"></span><span> </a></li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account  <span class="glyphicon glyphicon-user"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="setting.html" onclick="pageDiv(14,'Setting - JeruxShop','setting.html',0); return false;">Setting <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-            <li><a href="orders.html" onclick="pageDiv(15,'Orders - JeruxShop','orders.html',0); return false;">My Orders <span class="glyphicon glyphicon-shopping-cart pull-right"></span></a></li>
-            <li><a href="addBalance.html" onclick="pageDiv(13,'Add Balance - JeruxShop','addBalance.html',0); return false;">Add Balance <span class="glyphicon glyphicon-usd pull-right"></span></a></li>
-            
-            <li class="divider"></li>
-            <li><a href="logout.html" >Logout <span class="glyphicon glyphicon-off pull-right"></span></a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container-fluid -->
-</nav>
 <div id="mainDiv">
-<?php
-ob_start();
-session_start();
-error_reporting();
-date_default_timezone_set('UTC');
-include "../includes/config.php";
-
-if (!isset($_SESSION['sname']) and !isset($_SESSION['spass'])) {
-    header("location: ../");
-    exit();
-}
-$usrid = mysqli_real_escape_string($dbcon, $_SESSION['sname']);
-
-?>
-<?php
- echo'
-<div class="form-group col-lg-7 ">
-<div class="well">
-  Hello <a class="label label-primary">'.$usrid.'</a><br>
-    If you have any <b>Question</b> ,<b>Problem</b>, <b>Suggestion</b> or <b>Request</b> Please feel free to <a class="label label-default " href="tickets.html"><span class="glyphicon glyphicon-pencil"></span> Open a Ticket</a><br>
-    if you want to report an order , just go to <abbr title="Account - > My Orders or Click here" >My Orders  <span class="glyphicon glyphicon-shopping-cart"></span></abbr> 
-    then click on <a class="label label-primary">Report #[Order Id]</a> button<br><br>
-    Our Domains are <b>Jerux.to</b> || <b>Jerux.xyz</b> || <b>Jerux.shop</b> || <b>Jerux.pw</b> - Please Save them!
-
-</div>
-
-    <div class="list-group" id="div2">
-      	<h3><i class="glyphicon glyphicon-info-sign"></i> News</h3>'; 
-		 $qq = @mysqli_query($dbcon, "SELECT * FROM news ORDER by id desc LIMIT 5") or die("error here"); 
-
-                
-while($r = mysqli_fetch_assoc($qq)){				echo'<a class="list-group-item"><h5 class="list-group-item-heading"><b>'.stripcslashes($r['content']).'</b></h5><h6 class="list-group-item-text">'.$r['date'].'</h6></a>'; 
-}
- echo '
-
-				 </div>
-
-</div>
-<div class="form-group col-lg-4 ">
-	<!-- <img src="files/img/eid.jpg" style="width: 70%; height: 70%" title="Eid Mubarak"> -->
-<iframe src="static.html" style="border:none;" width="400" height="270" scrolling="no">Browser not compatible.</iframe>
-
-    ';
-	?>
-	<div class="well well-sm">    
-                  <h4><b>Our Support team is here !</b></h4><a class="btn btn-default btn-sm" onclick="pageDiv(9,'Tickets - OluxShop','tickets.html#open',0); return false;" href="tickets.html#open"><span class="glyphicon glyphicon-pencil"></span> Open a Ticket</a>
-                  <h5><b>Interested in becoming a seller at  Olux Shop ?</b></h5><a class="btn btn-primary btn-xs" href="seller.html" onclick="pageDiv(24,'Become Seller  - OluxShop','seller.html',0); return false;">Learn more</a>
-                  <h5><b>Available Payment Methods </b></h5>
-
-                  <img src="files/img/pmlogo2.png" height="48" width="49" title="PerfectMoney" onclick="pageDiv(11,'Add Balance - OluxShop','addBalance.html#perfectmoney',0); return false;" href="addBalance.html#perfectmoney" onmouseover="this.style.cursor='pointer'">
-                  <img src="files/img/btclogo.png" height="48" width="49" title="Bitcoin" onclick="pageDiv(11,'Add Balance - OluxShop','addBalance.html#bitcoin',0); return false;" href="addBalance.html#bitcoin" onmouseover="this.style.cursor='pointer'">
-                 
+  
+        <div class="content">
+	<!-- Stats Section -->
+<div class="py-4">
+  <div class="row g-3 mb-4">
+      <!-- Balance Card -->
+      <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+          <a class="block block-rounded block-link-pop bg-body-extra-light h-100" 
+             href="../add-balance/index.html"
+             data-bs-toggle="tooltip" 
+             data-bs-placement="top"
+             title="Manage Your Account Balance">
+              <div class="block-content block-content-full p-3">
+                  <div class="d-flex align-items-center justify-content-between">
+                      <div>
+                          <div class="fs-sm fw-semibold text-uppercase text-muted mb-2">
+                              <i class="fas fa-coins me-1"></i> Account Balance
+                          </div>
+                          <div class="d-flex align-items-center">
+                              <div class="fs-2 fw-bold text-danger">
+                                  $0.00
+                              </div>
+                              <div class="ms-3">
+                                                                        <i class="fas fa-face-sad-tear fa-lg text-danger animate-bounce"></i>
+                                                                </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="progress mt-2" style="height: 4px;">
+                      <div class="progress-bar bg-danger" 
+                           role="progressbar" 
+                           style="width: 0%" 
+                           aria-valuenow="0" 
+                           aria-valuemin="0" 
+                           aria-valuemax="5">
+                      </div>
+                  </div>
+              </div>
+          </a>
       </div>
-	<?php
-	echo '
-                 
+
+      <!-- Orders Card -->
+      <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+          <a class="block block-rounded block-link-pop bg-body-extra-light h-100" 
+             href="../orders/index.html"
+             data-bs-toggle="tooltip" 
+             data-bs-placement="top"
+             title="View Your Order History">
+              <div class="block-content block-content-full p-3">
+                  <div class="d-flex align-items-center justify-content-between">
+                      <div>
+                          <div class="fs-sm fw-semibold text-uppercase text-muted mb-2">
+                              <i class="fas fa-shopping-bag me-1 animate-slide"></i> Total Orders
+                          </div>
+                          <div class="fs-2 fw-bold text-primary">
+                              0
+                          </div>
+                      </div>
+                      <i class="fas fa-receipt fa-2x text-primary opacity-25 animate-float"></i>
+                  </div>
+                  <div class="fs-sm text-muted mt-2">
+                                                <span class="text-success">
+                              <i class="fas fa-cart-plus me-1"></i> Ready for your first order!
+                          </span>
+                                        </div>
+              </div>
+          </a>
       </div>
+
+      <!-- Tickets Card -->
+      <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+          <a class="block block-rounded block-link-pop bg-body-extra-light h-100" 
+             href="../tickets/index.html"
+             data-bs-toggle="tooltip" 
+             data-bs-placement="top"
+             title="Manage Support Tickets">
+              <div class="block-content block-content-full p-3">
+                  <div class="d-flex align-items-center justify-content-between">
+                      <div>
+                          <div class="fs-sm fw-semibold text-uppercase text-muted mb-2">
+                              <i class="fas fa-headset me-1  text-warning"></i> 
+                              Open Tickets
+                          </div>
+                          <div class="fs-2 fw-bold text-warning">
+                              0
+                          </div>
+                      </div>
+                      <div class="position-relative">
+                          <i class="fas fa-headphones-alt fa-2x text-warning opacity-25 "></i>
+                      </div>
+                  </div>
+                  <div class="fs-sm text-muted mt-2">
+                                                <span class="text-success">
+                              <i class="fas fa-check-circle me-1 animate-pop"></i> All resolved
+                          </span>
+                                        </div>
+              </div>
+          </a>
+      </div>
+
+      <!-- Reports Card -->
+      <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+          <a class="block block-rounded block-link-pop bg-body-extra-light h-100" 
+             href="index.html"
+             data-bs-toggle="tooltip" 
+             data-bs-placement="top"
+             title="View System Reports">
+              <div class="block-content block-content-full p-3">
+                  <div class="d-flex align-items-center justify-content-between">
+                      <div>
+                          <div class="fs-sm fw-semibold text-uppercase text-muted mb-2">
+                              <i class="fas fa-flag-checkered me-1 animate-pulse"></i> Active Reports
+                          </div>
+                          <div class="fs-2 fw-bold text-info">
+                            0
+                          </div>
+                      </div>
+                      <i class="fas fa-chart-area fa-2x text-info opacity-25 animate-float"></i>
+                  </div>
+                  <div class="fs-sm text-muted mt-2">
+                                        <span class="text-success">
+                        <i class="fas fa-check-circle me-1 animate-pop"></i> No Active Reports
+                    </span>
+                                  </div>
+              </div>
+          </a>
+      </div>
+      </div>
+    </div>
+
+<style>/* Animation Keyframes */
+  @keyframes dot-pulse {
+      0% { transform: scale(0.8); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.8); opacity: 0.5; }
+  }
+
+  @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+  }
+
+  @keyframes headphone {
+      0%, 100% { 
+          transform: rotate(0deg) translateY(0);
+          opacity: 0.25;
+      }
+      25% { 
+          transform: rotate(15deg) translateY(-3px);
+          opacity: 0.4;
+      }
+      75% { 
+          transform: rotate(-15deg) translateY(3px);
+          opacity: 0.4;
+      }
+  }
+
+  @keyframes sound-wave {
+      0% { 
+          transform: scale(0.8);
+          opacity: 0;
+      }
+      100% { 
+          transform: scale(1.8); 
+          opacity: 0;
+      }
+  }
+
+  @keyframes tilt {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      75% { transform: rotate(-3deg); }
+  }
+
+  @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+  }
+
+  @keyframes slide {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(5px); }
+  }
+
+  @keyframes pop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+  }
+
+  /* Animation Classes */
+  .animate-bounce { animation: bounce 1.5s ease-in-out infinite; }
+  .animate-headphone { 
+      animation: headphone 2s ease-in-out infinite; 
+      position: relative;
+  }
+  .animate-headphone::before,
+  .animate-headphone::after {
+      content: '';
+      position: absolute;
+      border: 2px solid #ffc107;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: sound-wave 1.5s linear infinite;
+  }
+  .animate-headphone::before {
+      animation-delay: 0.2s;
+  }
+  .animate-headphone::after {
+      animation-delay: 0.5s;
+  }
+  .animate-tilt { animation: tilt 2s ease-in-out infinite; }
+  .animate-float { animation: float 3s ease-in-out infinite; }
+  .animate-slide { animation: slide 2s ease-in-out infinite; }
+  .animate-pop { animation: pop 1s ease-in-out infinite; }
+  .animate-pulse { animation: dot-pulse 1.5s infinite linear; }
+
+  /* Shared Styles */
+  .dot-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+  }
+
+  .block-link-pop {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0,0,0,0.075);
+      transform-origin: center;
+  }
+  
+  .block-link-pop:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      border-color: rgba(0,0,0,0.1);
+  }
+
+  .progress {
+      background-color: rgba(0,0,0,0.05);
+      overflow: visible;
+  }
+
+  .progress-bar {
+      position: relative;
+      overflow: visible;
+      transition: width 0.5s ease-in-out;
+  }
+
+  .progress-bar::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: -2px;
+      width: 8px;
+      height: 8px;
+      background: inherit;
+      border-radius: 50%;
+  }
+</style>
+<!-- End Stats Section -->
+	
+<!-- Items ShowRoom -->
+<div class="block block-rounded">
+  <div class="slider-items card text-center border-0 shadow-sm rounded" style="height: 200;"> 
+            <div>
+          <div class="card-body" style="padding: 10px; text-align: center; position: relative;">
+                <!-- 70x70 Picture Based on Type -->
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <img src="https://www.metalheat.co.uk/wp-content/uploads/2018/11/kisspng-logo-royal-dutch-shell-petroleum-industry-oil-decal-5ac19d18b8eec7.1215187515226381047575.png" 
+                           alt="Shell" 
+                           style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+
+              <div class="block-content tab-content">
+                  <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                       aria-labelledby="ecom-product-info-tab" tabindex="0">
+                      <table class="table table-striped table-borderless">
+                          <tbody>
+                            <tr>
+                              <td style="width: 30%; text-align: left; padding-right: 20px;">Type</td>
+                              <td style="width: 70%; text-align: right;">
+                                  Shell
+                              </td>
+                          </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">ID</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      76
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">DA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      7
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">PA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      11
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                  </td>
+                                  <td style="text-align: right;">
+                                      $3.00
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Jan 12 2025
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Seller1
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+                            <a href="../shells/index.html" class="btn btn-primary" target="_blank">View Shells</a>
+                    </div>
+      </div>
+            <div>
+          <div class="card-body" style="padding: 10px; text-align: center; position: relative;">
+                <!-- 70x70 Picture Based on Type -->
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <img src="https://www.metalheat.co.uk/wp-content/uploads/2018/11/kisspng-logo-royal-dutch-shell-petroleum-industry-oil-decal-5ac19d18b8eec7.1215187515226381047575.png" 
+                           alt="Shell" 
+                           style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+
+              <div class="block-content tab-content">
+                  <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                       aria-labelledby="ecom-product-info-tab" tabindex="0">
+                      <table class="table table-striped table-borderless">
+                          <tbody>
+                            <tr>
+                              <td style="width: 30%; text-align: left; padding-right: 20px;">Type</td>
+                              <td style="width: 70%; text-align: right;">
+                                  Shell
+                              </td>
+                          </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">ID</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      81
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">DA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      5
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">PA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      10
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                  </td>
+                                  <td style="text-align: right;">
+                                      $2.00
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Jan 16 2025
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Seller1
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+                            <a href="../shells/index.html" class="btn btn-primary" target="_blank">View Shells</a>
+                    </div>
+      </div>
+            <div>
+          <div class="card-body" style="padding: 10px; text-align: center; position: relative;">
+                <!-- 70x70 Picture Based on Type -->
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <img src="https://www.metalheat.co.uk/wp-content/uploads/2018/11/kisspng-logo-royal-dutch-shell-petroleum-industry-oil-decal-5ac19d18b8eec7.1215187515226381047575.png" 
+                           alt="Shell" 
+                           style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+
+              <div class="block-content tab-content">
+                  <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                       aria-labelledby="ecom-product-info-tab" tabindex="0">
+                      <table class="table table-striped table-borderless">
+                          <tbody>
+                            <tr>
+                              <td style="width: 30%; text-align: left; padding-right: 20px;">Type</td>
+                              <td style="width: 70%; text-align: right;">
+                                  Shell
+                              </td>
+                          </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">ID</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      82
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">DA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      7
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">PA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      20
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                  </td>
+                                  <td style="text-align: right;">
+                                      $2.00
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Jan 16 2025
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Seller1
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+                            <a href="../shells/index.html" class="btn btn-primary" target="_blank">View Shells</a>
+                    </div>
+      </div>
+            <div>
+          <div class="card-body" style="padding: 10px; text-align: center; position: relative;">
+                <!-- 70x70 Picture Based on Type -->
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <img src="https://www.metalheat.co.uk/wp-content/uploads/2018/11/kisspng-logo-royal-dutch-shell-petroleum-industry-oil-decal-5ac19d18b8eec7.1215187515226381047575.png" 
+                           alt="Shell" 
+                           style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+
+              <div class="block-content tab-content">
+                  <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                       aria-labelledby="ecom-product-info-tab" tabindex="0">
+                      <table class="table table-striped table-borderless">
+                          <tbody>
+                            <tr>
+                              <td style="width: 30%; text-align: left; padding-right: 20px;">Type</td>
+                              <td style="width: 70%; text-align: right;">
+                                  Shell
+                              </td>
+                          </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">ID</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      101
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">DA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      13
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">PA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      17
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                  </td>
+                                  <td style="text-align: right;">
+                                      $3.00
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Jan 16 2025
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Seller1
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+                            <a href="../shells/index.html" class="btn btn-primary" target="_blank">View Shells</a>
+                    </div>
+      </div>
+            <div>
+          <div class="card-body" style="padding: 10px; text-align: center; position: relative;">
+                <!-- 70x70 Picture Based on Type -->
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <img src="https://www.metalheat.co.uk/wp-content/uploads/2018/11/kisspng-logo-royal-dutch-shell-petroleum-industry-oil-decal-5ac19d18b8eec7.1215187515226381047575.png" 
+                           alt="Shell" 
+                           style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+
+              <div class="block-content tab-content">
+                  <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                       aria-labelledby="ecom-product-info-tab" tabindex="0">
+                      <table class="table table-striped table-borderless">
+                          <tbody>
+                            <tr>
+                              <td style="width: 30%; text-align: left; padding-right: 20px;">Type</td>
+                              <td style="width: 70%; text-align: right;">
+                                  Shell
+                              </td>
+                          </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">ID</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      100
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">DA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      3
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">PA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      4
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                  </td>
+                                  <td style="text-align: right;">
+                                      $3.00
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Jan 16 2025
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Seller1
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+                            <a href="../shells/index.html" class="btn btn-primary" target="_blank">View Shells</a>
+                    </div>
+      </div>
+            <div>
+          <div class="card-body" style="padding: 10px; text-align: center; position: relative;">
+                <!-- 70x70 Picture Based on Type -->
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <img src="https://knight.domains/support/wp-content/uploads/2022/05/cpanel-1.png" 
+                           alt="cPanel" 
+                           style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+
+              <div class="block-content tab-content">
+                  <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                       aria-labelledby="ecom-product-info-tab" tabindex="0">
+                      <table class="table table-striped table-borderless">
+                          <tbody>
+                            <tr>
+                              <td style="width: 30%; text-align: left; padding-right: 20px;">Type</td>
+                              <td style="width: 70%; text-align: right;">
+                                  cPanel
+                              </td>
+                          </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">ID</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      88
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">DA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      12
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">PA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      22
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                  </td>
+                                  <td style="text-align: right;">
+                                      $5.00
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Jan 16 2025
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Seller1
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+                            <a href="../cpanels/index.html" class="btn btn-primary" target="_blank">View cPanels</a>
+                    </div>
+      </div>
+            <div>
+          <div class="card-body" style="padding: 10px; text-align: center; position: relative;">
+                <!-- 70x70 Picture Based on Type -->
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <img src="https://knight.domains/support/wp-content/uploads/2022/05/cpanel-1.png" 
+                           alt="cPanel" 
+                           style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+
+              <div class="block-content tab-content">
+                  <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                       aria-labelledby="ecom-product-info-tab" tabindex="0">
+                      <table class="table table-striped table-borderless">
+                          <tbody>
+                            <tr>
+                              <td style="width: 30%; text-align: left; padding-right: 20px;">Type</td>
+                              <td style="width: 70%; text-align: right;">
+                                  cPanel
+                              </td>
+                          </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">ID</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      120
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">DA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      4
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">PA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      4
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                  </td>
+                                  <td style="text-align: right;">
+                                      $7.00
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Jan 16 2025
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Seller1
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+                            <a href="../cpanels/index.html" class="btn btn-primary" target="_blank">View cPanels</a>
+                    </div>
+      </div>
+            <div>
+          <div class="card-body" style="padding: 10px; text-align: center; position: relative;">
+                <!-- 70x70 Picture Based on Type -->
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <img src="https://knight.domains/support/wp-content/uploads/2022/05/cpanel-1.png" 
+                           alt="cPanel" 
+                           style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+
+              <div class="block-content tab-content">
+                  <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                       aria-labelledby="ecom-product-info-tab" tabindex="0">
+                      <table class="table table-striped table-borderless">
+                          <tbody>
+                            <tr>
+                              <td style="width: 30%; text-align: left; padding-right: 20px;">Type</td>
+                              <td style="width: 70%; text-align: right;">
+                                  cPanel
+                              </td>
+                          </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">ID</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      155
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">DA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      3
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">PA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      14
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                  </td>
+                                  <td style="text-align: right;">
+                                      $6.00
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Jan 16 2025
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Seller1
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+                            <a href="../cpanels/index.html" class="btn btn-primary" target="_blank">View cPanels</a>
+                    </div>
+      </div>
+            <div>
+          <div class="card-body" style="padding: 10px; text-align: center; position: relative;">
+                <!-- 70x70 Picture Based on Type -->
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <img src="https://knight.domains/support/wp-content/uploads/2022/05/cpanel-1.png" 
+                           alt="cPanel" 
+                           style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+
+              <div class="block-content tab-content">
+                  <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                       aria-labelledby="ecom-product-info-tab" tabindex="0">
+                      <table class="table table-striped table-borderless">
+                          <tbody>
+                            <tr>
+                              <td style="width: 30%; text-align: left; padding-right: 20px;">Type</td>
+                              <td style="width: 70%; text-align: right;">
+                                  cPanel
+                              </td>
+                          </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">ID</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      55
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">DA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      3
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">PA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      12
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                  </td>
+                                  <td style="text-align: right;">
+                                      $5.00
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Jan 16 2025
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Seller1
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+                            <a href="../cpanels/index.html" class="btn btn-primary" target="_blank">View cPanels</a>
+                    </div>
+      </div>
+            <div>
+          <div class="card-body" style="padding: 10px; text-align: center; position: relative;">
+                <!-- 70x70 Picture Based on Type -->
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                                        <img src="https://knight.domains/support/wp-content/uploads/2022/05/cpanel-1.png" 
+                           alt="cPanel" 
+                           style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                </div>
+
+              <div class="block-content tab-content">
+                  <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                       aria-labelledby="ecom-product-info-tab" tabindex="0">
+                      <table class="table table-striped table-borderless">
+                          <tbody>
+                            <tr>
+                              <td style="width: 30%; text-align: left; padding-right: 20px;">Type</td>
+                              <td style="width: 70%; text-align: right;">
+                                  cPanel
+                              </td>
+                          </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">ID</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      210
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">DA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      3
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 30%; text-align: left; padding-right: 20px;">PA</td>
+                                  <td style="width: 70%; text-align: right;">
+                                      10
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                  </td>
+                                  <td style="text-align: right;">
+                                      $1.00
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Jan 16 2025
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                      <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                  </td>
+                                  <td style="text-align: right;">
+                                      Seller1
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+                            <a href="../cpanels/index.html" class="btn btn-primary" target="_blank">View cPanels</a>
+                    </div>
+      </div>
+        </div>
+</div>
+  
+  <style>/* Items ShowRoom Slider */
+.slider-items .slick-slide {
+    padding: 0 5px; /* Reduce spacing between slides */
+}
+
+.slider-items .card-body {
+    padding: 10px !important; /* Reduce padding */
+}
+
+.slider-items img {
+    width: 70px; /* Ensure image size */
+    height: 70px; /* Ensure image size */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.slider-items .table {
+    font-size: 0.8em; /* Reduce font size */
+    margin-top: 5px; /* Reduce spacing */
+}
+
+.slider-items .table th,
+.slider-items .table td {
+    padding: 0.2rem; /* Reduce cell padding */
+}
+  </style>
+  
+    <!-- End Items ShowRoom -->   
+      <!-- Accounts ShowRoom -->
+    <div class="block block-rounded">
+      <div class="slider card text-center border-0 shadow-sm rounded" style="height: 300;"> 
+                    <div>
+              <div class="card-body" style="padding: 20px; text-align: center; position: relative;">
+                                    <div class="position-relative product-container">
+                    <img class="img-fluid options-item w-100" 
+                    style="height: 200px; object-fit: cover;"
+                    src="../storage/images/section_image/1723994004_66c20f9497893.jpg" 
+                    alt="Facebook"
+                    loading="lazy">
+                                            <div class="item-info-overlay">
+                          <div class="rounded-info-block">
+                              Facebook accounts with 11$ price
+                          </div>
+                      </div>
+                                        </div>
+                    
+                  <div class="block-content tab-content">
+                      <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                          aria-labelledby="ecom-product-info-tab" tabindex="0">
+                          <table class="table table-striped table-borderless">
+                              <thead>
+                                  <tr>
+                                      <th colspan="2" class="product-name">Facebook</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Email</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Password</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                      </td>
+                                      <td style="text-align: right;">
+                                          $11.00
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Sep 27 2024
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Seller2
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+  
+                                    <p class="card-text" style="font-size: 1.1em; color: #007bff;">
+                      <a href="../product/20/index.html" class="btn btn-primary">View</a>
+                  </p>
+                                </div>
+          </div>
+                    <div>
+              <div class="card-body" style="padding: 20px; text-align: center; position: relative;">
+                                    <div class="position-relative product-container">
+                    <img class="img-fluid options-item w-100" 
+                    style="height: 200px; object-fit: cover;"
+                    src="../storage/images/section_image/1723994004_66c20f9497893.jpg" 
+                    alt="Facebook"
+                    loading="lazy">
+                                            <div class="item-info-overlay">
+                          <div class="rounded-info-block">
+                              Facebook accounts with 10$ price
+                          </div>
+                      </div>
+                                        </div>
+                    
+                  <div class="block-content tab-content">
+                      <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                          aria-labelledby="ecom-product-info-tab" tabindex="0">
+                          <table class="table table-striped table-borderless">
+                              <thead>
+                                  <tr>
+                                      <th colspan="2" class="product-name">Facebook</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Email</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Password</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                      </td>
+                                      <td style="text-align: right;">
+                                          $10.00
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Sep 27 2024
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Seller2
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+  
+                                    <p class="card-text" style="font-size: 1.1em; color: #007bff;">
+                      <a href="../product/11/index.html" class="btn btn-primary">View</a>
+                  </p>
+                                </div>
+          </div>
+                    <div>
+              <div class="card-body" style="padding: 20px; text-align: center; position: relative;">
+                                    <div class="position-relative product-container">
+                    <img class="img-fluid options-item w-100" 
+                    style="height: 200px; object-fit: cover;"
+                    src="../storage/images/section_image/1723994004_66c20f9497893.jpg" 
+                    alt="Facebook"
+                    loading="lazy">
+                                            <div class="item-info-overlay">
+                          <div class="rounded-info-block">
+                              Facebook accounts with 11$ price
+                          </div>
+                      </div>
+                                        </div>
+                    
+                  <div class="block-content tab-content">
+                      <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                          aria-labelledby="ecom-product-info-tab" tabindex="0">
+                          <table class="table table-striped table-borderless">
+                              <thead>
+                                  <tr>
+                                      <th colspan="2" class="product-name">Facebook</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Email</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Password</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                      </td>
+                                      <td style="text-align: right;">
+                                          $11.00
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Sep 27 2024
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Seller2
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+  
+                                    <p class="card-text" style="font-size: 1.1em; color: #007bff;">
+                      <a href="../product/21/index.html" class="btn btn-primary">View</a>
+                  </p>
+                                </div>
+          </div>
+                    <div>
+              <div class="card-body" style="padding: 20px; text-align: center; position: relative;">
+                                    <div class="position-relative product-container">
+                    <img class="img-fluid options-item w-100" 
+                    style="height: 200px; object-fit: cover;"
+                    src="../storage/images/section_image/1723994392_66c2111898364.jpg" 
+                    alt="Telegram"
+                    loading="lazy">
+                                            <div class="item-info-overlay">
+                          <div class="rounded-info-block">
+                              telegram accounts with 11$ price
+                          </div>
+                      </div>
+                                        </div>
+                    
+                  <div class="block-content tab-content">
+                      <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                          aria-labelledby="ecom-product-info-tab" tabindex="0">
+                          <table class="table table-striped table-borderless">
+                              <thead>
+                                  <tr>
+                                      <th colspan="2" class="product-name">Telegram</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Email</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Password</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                      </td>
+                                      <td style="text-align: right;">
+                                          $11.00
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Sep 27 2024
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Seller2
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+  
+                                    <p class="card-text" style="font-size: 1.1em; color: #007bff;">
+                      <a href="../product/28/index.html" class="btn btn-primary">View</a>
+                  </p>
+                                </div>
+          </div>
+                    <div>
+              <div class="card-body" style="padding: 20px; text-align: center; position: relative;">
+                                    <div class="position-relative product-container">
+                    <img class="img-fluid options-item w-100" 
+                    style="height: 200px; object-fit: cover;"
+                    src="../storage/images/section_image/1737236480_678c20005ad9a.jpeg" 
+                    alt="Twitter [ X ]"
+                    loading="lazy">
+                                            <div class="item-info-overlay">
+                          <div class="rounded-info-block">
+                              twitter accounts with mixed range prices
+                          </div>
+                      </div>
+                                        </div>
+                    
+                  <div class="block-content tab-content">
+                      <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                          aria-labelledby="ecom-product-info-tab" tabindex="0">
+                          <table class="table table-striped table-borderless">
+                              <thead>
+                                  <tr>
+                                      <th colspan="2" class="product-name">Twitter [ X ]</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Email</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Password</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                      </td>
+                                      <td style="text-align: right;">
+                                          $11.00
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Sep 27 2024
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Seller2
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+  
+                                    <p class="card-text" style="font-size: 1.1em; color: #007bff;">
+                      <a href="../product/41/index.html" class="btn btn-primary">View</a>
+                  </p>
+                                </div>
+          </div>
+                    <div>
+              <div class="card-body" style="padding: 20px; text-align: center; position: relative;">
+                                    <div class="position-relative product-container">
+                    <img class="img-fluid options-item w-100" 
+                    style="height: 200px; object-fit: cover;"
+                    src="../storage/images/section_image/1723994392_66c2111898364.jpg" 
+                    alt="Telegram"
+                    loading="lazy">
+                                            <div class="item-info-overlay">
+                          <div class="rounded-info-block">
+                              telegram accounts with 11$ price
+                          </div>
+                      </div>
+                                        </div>
+                    
+                  <div class="block-content tab-content">
+                      <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                          aria-labelledby="ecom-product-info-tab" tabindex="0">
+                          <table class="table table-striped table-borderless">
+                              <thead>
+                                  <tr>
+                                      <th colspan="2" class="product-name">Telegram</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Email</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Password</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                      </td>
+                                      <td style="text-align: right;">
+                                          $11.00
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Sep 27 2024
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Seller2
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+  
+                                    <p class="card-text" style="font-size: 1.1em; color: #007bff;">
+                      <a href="../product/26/index.html" class="btn btn-primary">View</a>
+                  </p>
+                                </div>
+          </div>
+                    <div>
+              <div class="card-body" style="padding: 20px; text-align: center; position: relative;">
+                                    <div class="position-relative product-container">
+                    <img class="img-fluid options-item w-100" 
+                    style="height: 200px; object-fit: cover;"
+                    src="../storage/images/section_image/1723994004_66c20f9497893.jpg" 
+                    alt="Facebook"
+                    loading="lazy">
+                                            <div class="item-info-overlay">
+                          <div class="rounded-info-block">
+                              Facebook accounts with 10$ price
+                          </div>
+                      </div>
+                                        </div>
+                    
+                  <div class="block-content tab-content">
+                      <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                          aria-labelledby="ecom-product-info-tab" tabindex="0">
+                          <table class="table table-striped table-borderless">
+                              <thead>
+                                  <tr>
+                                      <th colspan="2" class="product-name">Facebook</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Email</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Password</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                      </td>
+                                      <td style="text-align: right;">
+                                          $10.00
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Sep 27 2024
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Seller2
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+  
+                                    <p class="card-text" style="font-size: 1.1em; color: #007bff;">
+                      <a href="../product/15/index.html" class="btn btn-primary">View</a>
+                  </p>
+                                </div>
+          </div>
+                    <div>
+              <div class="card-body" style="padding: 20px; text-align: center; position: relative;">
+                                    <div class="position-relative product-container">
+                    <img class="img-fluid options-item w-100" 
+                    style="height: 200px; object-fit: cover;"
+                    src="../storage/images/section_image/1723994004_66c20f9497893.jpg" 
+                    alt="Facebook"
+                    loading="lazy">
+                                            <div class="item-info-overlay">
+                          <div class="rounded-info-block">
+                              some information about my current items
+                          </div>
+                      </div>
+                                        </div>
+                    
+                  <div class="block-content tab-content">
+                      <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                          aria-labelledby="ecom-product-info-tab" tabindex="0">
+                          <table class="table table-striped table-borderless">
+                              <thead>
+                                  <tr>
+                                      <th colspan="2" class="product-name">Facebook</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Email</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Password</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                      </td>
+                                      <td style="text-align: right;">
+                                          $20.00
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Aug 25 2024
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Seller2
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+  
+                                    <p class="card-text" style="font-size: 1.1em; color: #007bff;">
+                      <a href="../product/3/index.html" class="btn btn-primary">View</a>
+                  </p>
+                                </div>
+          </div>
+                    <div>
+              <div class="card-body" style="padding: 20px; text-align: center; position: relative;">
+                                    <div class="position-relative product-container">
+                    <img class="img-fluid options-item w-100" 
+                    style="height: 200px; object-fit: cover;"
+                    src="../storage/images/section_image/1723994004_66c20f9497893.jpg" 
+                    alt="Facebook"
+                    loading="lazy">
+                                            <div class="item-info-overlay">
+                          <div class="rounded-info-block">
+                              Facebook accounts with 10$ price
+                          </div>
+                      </div>
+                                        </div>
+                    
+                  <div class="block-content tab-content">
+                      <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                          aria-labelledby="ecom-product-info-tab" tabindex="0">
+                          <table class="table table-striped table-borderless">
+                              <thead>
+                                  <tr>
+                                      <th colspan="2" class="product-name">Facebook</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Email</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Password</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                      </td>
+                                      <td style="text-align: right;">
+                                          $10.00
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Sep 27 2024
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Seller2
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+  
+                                    <p class="card-text" style="font-size: 1.1em; color: #007bff;">
+                      <a href="../product/9/index.html" class="btn btn-primary">View</a>
+                  </p>
+                                </div>
+          </div>
+                    <div>
+              <div class="card-body" style="padding: 20px; text-align: center; position: relative;">
+                                    <div class="position-relative product-container">
+                    <img class="img-fluid options-item w-100" 
+                    style="height: 200px; object-fit: cover;"
+                    src="../storage/images/section_image/1723994004_66c20f9497893.jpg" 
+                    alt="Facebook"
+                    loading="lazy">
+                                            <div class="item-info-overlay">
+                          <div class="rounded-info-block">
+                              Facebook accounts with 11$ price
+                          </div>
+                      </div>
+                                        </div>
+                    
+                  <div class="block-content tab-content">
+                      <div class="tab-pane pull-x active" id="ecom-product-info" role="tabpanel"
+                          aria-labelledby="ecom-product-info-tab" tabindex="0">
+                          <table class="table table-striped table-borderless">
+                              <thead>
+                                  <tr>
+                                      <th colspan="2" class="product-name">Facebook</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Email</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 30%; text-align: left; padding-right: 20px;">Password</td>
+                                      <td style="width: 70%; text-align: right;">
+                                                                                        <i class="fa fa-check text-success"></i>
+                                                                                </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-dollar-sign text-muted me-1"></i> Price
+                                      </td>
+                                      <td style="text-align: right;">
+                                          $11.00
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fa fa-fw fa-calendar text-muted me-1"></i> Date
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Sep 27 2024
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="width: 20%; text-align: left; padding-right: 20px;">
+                                          <i class="fab fa-fw fa-mailchimp text-muted me-1"></i> Seller
+                                      </td>
+                                      <td style="text-align: right;">
+                                          Seller2
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+  
+                                    <p class="card-text" style="font-size: 1.1em; color: #007bff;">
+                      <a href="../product/23/index.html" class="btn btn-primary">View</a>
+                  </p>
+                                </div>
+          </div>
+                </div>
   </div>
-'; ?>
+  
+  <style>.product-name {
+      color: inherit !important;
+      background-color: transparent !important;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+      .product-name {
+          border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      }
+  }
+  
+  .product-container {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 8px;
+  }
+  
+  .options-item {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+  }
+  
+  .item-info-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      transition: all 0.4s ease;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%);
+  }
+  
+  .rounded-info-block {
+      background-color: rgba(0, 0, 0, 0.2);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 12px;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      font-size: 1em;
+      word-wrap: break-word;
+      max-width: 90%;
+      text-align: center;
+      transform: translateY(-5px);
+      transition: all 0.4s ease;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Hover Effects */
+  .product-container:hover .options-item {
+      transform: scale(1.05);
+  }
+  
+  .product-container:hover .item-info-overlay {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 100%);
+  }
+  
+  .product-container:hover .rounded-info-block {
+      background-color: rgba(0, 0, 0, 0.4);
+      transform: translateY(0);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Table Styles */
+  .table {
+      margin-top: 15px;
+  }
+  
+  .table th {
+      background-color: #f8f9fa;
+      border-bottom: 2px solid #dee2e6;
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+  }
+  
+  .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+      .product-container {
+          height: 180px;
+      }
+      
+      .rounded-info-block {
+          font-size: 0.9em;
+          padding: 6px 12px;
+      }
+      
+      .table td, .table th {
+          padding: 0.5rem;
+      }
+  }
+  
+  @media (max-width: 576px) {
+      .product-container {
+          height: 200px;
+      }
+      
+      .table td, .table th {
+          padding: 0.5rem;
+          font-size: 0.9em;
+      }
+  
+      .slider .card-body {
+          padding: 15px !important;
+      }
+  }
+  
+  /* Slick Slider Custom Styles */
+  .slick-prev, .slick-next {
+      z-index: 1;
+  }
+  
+  .slick-prev {
+      left: 10px;
+  }
+  
+  .slick-next {
+      right: 10px;
+  }
+  
+  .slick-dots {
+      bottom: -35px;
+  }
+  
+  .slick-dots li button:before {
+      font-size: 12px;
+  }
+  </style>
+  
+    <!-- End Accounts ShowRoom -->
+
+<!-- Hero -->
+        <div class="bg-body-light">
+          <div class="content content-full">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
+              <div class="flex-grow-1">
+                <h2 class="fs-base lh-base fw-medium text-muted mb-0">
+                  <i class="fas fa-newspaper text-primary"></i>                   System News and Events
+                </h2>
+              </div>
+              <div class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3">
+     				 <!-- Become A seller Mode -->
+      
+            <!-- Become a Seller Button -->
+        <a class="btn btn-sm btn-alt-primary" href="../become-seller/index.html">
+            <i class="fa fa-user-plus me-1"></i> Become a Seller
+        </a>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <!-- END Hero -->
+    <div class="content">
+      <!-- Timeline -->
+      <!--
+          Available classes for timeline list:
+
+          'timeline'                                      A normal timeline with icons to the left in all screens
+          'timeline timeline-centered timeline-alt'       A centered timeline with odd events to the left and even events to the right (screen width > 1200px)
+          'timeline timeline-centered'                    A centered timeline with all events to the left. You can add the class 'timeline-event-alt'
+                                                          to 'timeline-event' elements to position them to the right (screen width > 1200px) (useful, if you
+                                                          would like to have multiple events to the left or to the right section)
+      -->
+      <ul class="timeline timeline-alt">
+        <!-- Update Event -->
+                <ul class="timeline timeline-alt">
+            <li class="timeline-event">
+                <div class="timeline-event-icon bg-danger">
+                    <i class="fab fa-mailchimp"></i>
+                </div>
+                <div class="timeline-event-block block">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">📢 Premium Account Marketplace</h3>
+                        <div class="block-options">
+                            <div class="timeline-event-time block-options-item fs-sm fw-semibold">
+                                4 weeks ago
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-content">
+                        <div class="d-flex fs-sm">
+                            <a class="flex-shrink-0 img-link me-2" href="javascript:void(0)">
+                                <img class="img-avatar img-avatar48 img-avatar-thumb" src="https://png.pngtree.com/png-vector/20240612/ourmid/pngtree-monkey-smoke-sigarate-png-image_12720609.png" alt="">
+                            </a>
+                            <div class="flex-grow-1">
+                                <p>
+                                    <a class="fw-semibold" href="javascript:void(0)"></a>
+                                    🌎 Featuring verified gaming accounts, dating profiles, and API access solutions. Browse our curated selection of trusted accounts. 🌎
+                                </p>
+                                <p>
+                                    <a class="text-dark me-2" href="#">
+                                        <i class="fa fa-user fa-fw text-muted"></i> Administrator
+                                    
+                                    <a class="text-dark me-2" href="javascript:void(0)">
+                                        <i class="fa fa-heart fa-fw text-muted"></i> Like
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+            <ul class="timeline timeline-alt">
+            <li class="timeline-event">
+                <div class="timeline-event-icon bg-danger">
+                    <i class="fab fa-mailchimp"></i>
+                </div>
+                <div class="timeline-event-block block">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">💲 Free Bonus</h3>
+                        <div class="block-options">
+                            <div class="timeline-event-time block-options-item fs-sm fw-semibold">
+                                1 month ago
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-content">
+                        <div class="d-flex fs-sm">
+                            <a class="flex-shrink-0 img-link me-2" href="javascript:void(0)">
+                                <img class="img-avatar img-avatar48 img-avatar-thumb" src="https://png.pngtree.com/png-vector/20240612/ourmid/pngtree-monkey-smoke-sigarate-png-image_12720609.png" alt="">
+                            </a>
+                            <div class="flex-grow-1">
+                                <p>
+                                    <a class="fw-semibold" href="javascript:void(0)"></a>
+                                    🎁 Receive a 25% bonus on all deposits of $50 or more 🎁
+                                </p>
+                                <p>
+                                    <a class="text-dark me-2" href="#">
+                                        <i class="fa fa-user fa-fw text-muted"></i> Sales
+                                    
+                                    <a class="text-dark me-2" href="javascript:void(0)">
+                                        <i class="fa fa-heart fa-fw text-muted"></i> Like
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+            <!-- END Update Event -->
+
+
+
+        <!-- News Event -->
+                <li class="timeline-event">
+          <div class="timeline-event-icon bg-success">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <div class="timeline-event-block block">
+            <div class="block-header block-header-default">
+              <h3 class="block-title">🆕 Account Promotion</h3>
+              <div class="block-options">
+                <div class="timeline-event-time block-options-item fs-sm fw-semibold">
+                  1 month ago
+                </div>
+              </div>
+            </div>
+            <div class="block-content">
+              <div class="d-flex fs-sm push">
+                            <a class="flex-shrink-0 img-link me-2" href="javascript:void(0)">
+                                <img class="img-avatar img-avatar48 img-avatar-thumb" src="https://img.freepik.com/premium-photo/monkey-with-sunglasses-his-head_81048-832.jpg" alt="">
+                            </a>
+                <div class="flex-grow-1">
+                  <p>
+                    Upgrade your account to [ Premium Seo Buyer] status and get access to many extra features 
+
+Unmask Hosts information  [ Domain &amp; IP &amp; Google Indexing &amp; Domain Authority &amp; Page Authority &amp; Request Shells and pay after checking Shells
+                     <a class="fw-semibold"></a>
+                  </p>
+                  <p>
+                    <a class="text-dark me-2" href="#">
+                        <i class="fa fa-user fa-fw text-muted"></i> Support
+                    </a>
+                    
+                    <a class="text-dark me-2" href="javascript:void(0)">
+                        <i class="fa fa-heart fa-fw text-muted"></i> Like
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+                <li class="timeline-event">
+          <div class="timeline-event-icon bg-success">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <div class="timeline-event-block block">
+            <div class="block-header block-header-default">
+              <h3 class="block-title">⚠️ Important Note</h3>
+              <div class="block-options">
+                <div class="timeline-event-time block-options-item fs-sm fw-semibold">
+                  4 weeks ago
+                </div>
+              </div>
+            </div>
+            <div class="block-content">
+              <div class="d-flex fs-sm push">
+                            <a class="flex-shrink-0 img-link me-2" href="javascript:void(0)">
+                                <img class="img-avatar img-avatar48 img-avatar-thumb" src="https://img.freepik.com/premium-photo/monkey-with-sunglasses-his-head_81048-832.jpg" alt="">
+                            </a>
+                <div class="flex-grow-1">
+                  <p>
+                    We don&#039;t have ICQ or any other communication tool you can contact us only with the ticket system and telegram will be activated soon
+                     <a class="fw-semibold"></a>
+                  </p>
+                  <p>
+                    <a class="text-dark me-2" href="#">
+                        <i class="fa fa-user fa-fw text-muted"></i> Support
+                    </a>
+                    
+                    <a class="text-dark me-2" href="javascript:void(0)">
+                        <i class="fa fa-heart fa-fw text-muted"></i> Like
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+                <!-- END Photos Event -->
+
+        <!-- System Event -->
+        <li class="timeline-event">
+          <div class="timeline-event-icon bg-dark">
+            <i class="fa fa-cogs"></i>
+          </div>
+          <div class="timeline-event-block block">
+            <div class="block-header block-header-default">
+              <h3 class="block-title">System</h3>
+              <div class="block-options">
+                <div class="timeline-event-time block-options-item fs-sm fw-semibold">
+                  1 month ago
+                </div>
+              </div>
+            </div>
+            <div class="block-content">
+              <div class="alert alert-success d-flex align-items-center justify-content-between" role="alert">
+                <div class="flex-grow-1 me-3">
+                  <p class="mb-0">WaXa Platform successfully <a class="alert-link" href="javascript:void(0)">updated</a> to v1.0!</p>
+                </div>
+                <div class="flex-shrink-0">
+                  <i class="fa fa-fw fa-check-circle"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- END System Event -->
+
+      </ul>
+      <!-- END Timeline -->
+    </div>
+      </main>
+      
+      	<?php require_once("footer.php"); ?>
 
 
 </div>
