@@ -91,14 +91,25 @@ if ($reselerif == "1") {
                             <span class="badge rounded-pill bg-primary ms-2">0</span>
                         </a>
                         <a class="dropdown-item d-flex align-items-center justify-content-between"
-                            href="../tickets/index.html">
-                            <span class="fs-sm fw-medium">Tickets</span>
-                            <span class="badge rounded-pill bg-danger ms-2">0</span>
+                            href="../tickets/index.html"><?php
+$s1 = mysqli_query($dbcon, "SELECT * FROM ticket WHERE uid='$uid' and seen='1'");
+$r1 = mysqli_num_rows($s1);
+if ($r1 == "1") {
+    echo '<span class="label label-success"> 1 New</span>';
+}
+?>
                         </a>
                         <a class="dropdown-item d-flex align-items-center justify-content-between"
-                            href="index.html">
-                            <span class="fs-sm fw-medium">Reports</span>
-                            <span class="badge rounded-pill bg-danger ms-2">1</span>
+                            href="index.html">                 <span class="fs-sm fw-medium">Reports</span>
+                            <span class="badge rounded-pill bg-danger ms-2">1</span><?php
+$s1 = mysqli_query($dbcon, "SELECT * FROM reports WHERE uid='$uid' and seen='1'");
+$r1 = mysqli_num_rows($s1);
+if ($r1 == "1") {
+    echo '<span class="label label-success"> 1 New</span>';
+}
+?>
+                      
+           
                         </a>
                         <a class="dropdown-item d-flex align-items-center justify-content-between"
                             href="index.html">
