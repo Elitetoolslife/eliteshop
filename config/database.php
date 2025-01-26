@@ -1,22 +1,33 @@
 <?php
-
-
-
-
-
-
-
-return [
-
-
-
-
+    /*
+    |--------------------------------------------------------------------------
+    | Default Database Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | This option controls which of the database connections below will be used
+    | by default. You may change the default connection at any time.
+    |
+    */
+   return [
+    /*
+    |--------------------------------------------------------------------------
+    | Default Database Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | This option controls which of the database connections below will be used
+    | by default. You may change the default connection at any time.
+    |
+    */
     'default' => getenv('DB_CONNECTION') ?: 'mysql',
-
-
-
-
-
+    /*
+    |--------------------------------------------------------------------------
+    | Default Database Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | This option controls which of the database connections below will be used
+    | by default. You may change the default connection at any time.
+    |
+    */
     'connections' => [
         'mysql' => [
             'driver' => 'mysql',
@@ -32,12 +43,28 @@ return [
             'engine' => null,
         ],
     ],
-
+    /*
+    |--------------------------------------------------------------------------
+    | Default Database Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | This option controls which of the database connections below will be used
+    | by default. You may change the default connection at any time.
+    |
+    */
     'migrations' => [
         'table' => 'migrations',
         'update_date_on_publish' => true,
     ],
-
+    /*
+    |--------------------------------------------------------------------------
+    | Default Database Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | This option controls which of the database connections below will be used
+    | by default. You may change the default connection at any time.
+    |
+    */
     'redis' => [
         'client' => 'phpredis',
         'options' => [
