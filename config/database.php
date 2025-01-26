@@ -1,11 +1,37 @@
 <?php
 
+// Connect to the database
+$dbcon = mysqli_connect(
+    getenv('DB_HOST'),
+    getenv('DB_USERNAME'),
+    getenv('DB_PASSWORD'),
+    getenv('DB_DATABASE')
+) or die('Unable to connect to the database');
+
+// Return the database configuration array
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Database Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | Specify which database connection to use as the default.
+    |
+    */
 
     'default' => getenv('DB_CONNECTION') ?: 'sqlite',
 
-    'connections' => [
+    /*
+    |--------------------------------------------------------------------------
+    | Database Connections
+    |--------------------------------------------------------------------------
+    |
+    | Database connection configurations.
+    |
+    */
 
+    'connections' => [
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => getenv('DB_URL'),
@@ -84,41 +110,49 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
-
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Migration Repository Table
+    |--------------------------------------------------------------------------
+    |
+    | Table to track migrations.
+    |
+    */
 
     'migrations' => [
         'table' => 'migrations',
         'update_date_on_publish' => true,
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Redis Databases
+    |--------------------------------------------------------------------------
+    |
+    | Redis configurations.
+    |
+    */
+
     'redis' => [
-
         'client' => getenv('REDIS_CLIENT') ?: 'phpredis',
-
         'options' => [
             'cluster' => getenv('REDIS_CLUSTER') ?: 'redis',
-            'prefix' => getenv('REDIS_PREFIX') ?: Str::slug(getenv('APP_NAME') ?: 'laravel', '_') . '_database_',
+            'prefix' => getenv('REDIS_PREFIX') ?: 'your_project_database_',
         ],
-
         'default' => [
             'url' => getenv('REDIS_URL'),
             'host' => getenv('REDIS_HOST') ?: '127.0.0.1',
-            'username' => getenv('REDIS_USERNAME'),
-            'password' => getenv('REDIS_PASSWORD'),
             'port' => getenv('REDIS_PORT') ?: '6379',
             'database' => getenv('REDIS_DB') ?: '0',
         ],
-
         'cache' => [
             'url' => getenv('REDIS_URL'),
             'host' => getenv('REDIS_HOST') ?: '127.0.0.1',
-            'username' => getenv('REDIS_USERNAME'),
-            'password' => getenv('REDIS_PASSWORD'),
             'port' => getenv('REDIS_PORT') ?: '6379',
             'database' => getenv('REDIS_CACHE_DB') ?: '1',
         ],
-
     ],
 
 ];
