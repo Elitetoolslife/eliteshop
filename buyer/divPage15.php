@@ -5,7 +5,7 @@ error_reporting();
 date_default_timezone_set('UTC');
 include "../includes/config.php";
 
-if (!isset($_SESSION['sname']) and !isset($_SESSION['spass'])) {
+if (!isset($_SESSION['user']) and !isset($_SESSION['pass'])) {
     header("location: ../");
     exit();
 }
@@ -49,8 +49,8 @@ function sendt(id){
  <tbody id='tbody2'>
  <?php
 $real_data = date("Y-m-d H:i:s");
-$usrid     = mysqli_real_escape_string($dbcon, $_SESSION['sname']);
-$q = mysqli_query($dbcon, "SELECT * FROM purchases WHERE buyer='$usrid' ORDER BY id DESC") or die(mysql_error());
+$username     = mysqli_real_escape_string($dbcon, $_SESSION['user']);
+$q = mysqli_query($dbcon, "SELECT * FROM purchases WHERE buyer='$username' ORDER BY id DESC") or die(mysql_error());
 
 while ($row = mysqli_fetch_assoc($q)) {
     $idorder   = $row['id'];
@@ -83,7 +83,7 @@ while ($row = mysqli_fetch_assoc($q)) {
         echo 'Time expired';
     } else {
         if ($row['reported'] == "1") {
-            $qrrr = mysqli_query($dbcon, "SELECT * FROM reports WHERE s_id='$sidd' and uid='$usrid'") or die(mysqli_error());
+            $qrrr = mysqli_query($dbcon, "SELECT * FROM reports WHERE s_id='$sidd' and uid='$username'") or die(mysqli_error());
             while ($rowe = mysqli_fetch_assoc($qrrr)) {
                 $idreport = $rowe['id'];
                 echo "<font color='green'><a href='vr-$idreport.html'><u>#$idreport</u></font></a>";
